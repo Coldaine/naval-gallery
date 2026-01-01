@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Pre‑Dreadnought & Dreadnought Warship Plates</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #0b1020;
+      color: #f5f5f5;
+    }
+
+    header {
+      padding: 1.5rem 2rem;
+      background: #050814;
+      border-bottom: 1px solid #20263a;
+    }
+
+    header h1 {
+      margin: 0 0 .3rem;
+      font-size: 1.6rem;
+    }
+
+    header p {
+      margin: 0;
+      color: #b0b7d0;
+      font-size: .9rem;
+    }
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .75rem;
+      margin-top: 1rem;
+    }
+
+    .controls label {
+      font-size: .8rem;
+      color: #c0c6dd;
+    }
+
+    .controls select {
+      background: #131933;
+      color: #f5f5f5;
+      border-radius: 4px;
+      border: 1px solid #252c44;
+      padding: .2rem .5rem;
+      font-size: .85rem;
+    }
+
+    main {
+      padding: 1rem 2rem 2rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+
+    .card {
+      background: #131933;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid #20263a;
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      transition: transform .12s ease, box-shadow .12s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.6);
+    }
+
+    .card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      background: #050814;
+    }
+
+    .card-body {
+      padding: .6rem .75rem .7rem;
+    }
+
+    .card-title {
+      font-size: .9rem;
+      margin: 0 0 .15rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .card-meta {
+      font-size: .75rem;
+      color: #b8beda;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: .7rem;
+      padding: .05rem .3rem;
+      border-radius: 999px;
+      border: 1px solid #394266;
+      color: #d4daf6;
+      margin-right: .25rem;
+      margin-top: .15rem;
+    }
+
+    .no-results {
+      margin-top: 2rem;
+      color: #a7afcb;
+      font-size: .9rem;
+    }
+
+    /* Modal */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+    }
+
+    .modal {
+      max-width: 90vw;
+      max-height: 90vh;
+      background: #050814;
+      border-radius: 6px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #3a4466;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: .5rem .75rem;
+      border-bottom: 1px solid #20263a;
+    }
+
+    .modal-header h2 {
+      margin: 0;
+      font-size: .95rem;
+    }
+
+    .modal-close {
+      cursor: pointer;
+      font-size: 1.2rem;
+      line-height: 1;
+      color: #c5cbe4;
+    }
+
+    .modal-body {
+      padding: .4rem .75rem .75rem;
+      overflow: auto;
+    }
+
+    .modal-body img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto .5rem;
+    }
+
+    .modal-meta {
+      font-size: .8rem;
+      color: #c0c6dd;
+    }
+
+    .modal-meta dt {
+      font-weight: 600;
+      margin-top: .25rem;
+    }
+
+    .modal-meta dd {
+      margin: 0 0 .15rem;
+    }
+
+    .modal-meta a {
+      color: #8fb4ff;
+      text-decoration: none;
+    }
+
+    .modal-meta a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 720px) {
+
+      header,
+      main {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Pre‑Dreadnought & Dreadnought Warship Plates</h1>
+    <p>A curated gallery of hull lines, profiles, sections, and machinery drawings from digitized public‑domain naval
+      sources.</p>
+
+    <div class="controls">
+      <label>
+        Navy:
+        <select id="navyFilter">
+          <option value="all">All</option>
+          <option value="US">US</option>
+          <option value="UK">Royal Navy</option>
+          <option value="DE">Germany</option>
+          <option value="FR">France</option>
+          <option value="IT">Italy</option>
+          <option value="RU">Russia</option>
+          <option value="JP">Japan</option>
+          <option value="AH">Austro‑Hungarian</option>
+          <option value="OTHER">Other / Mixed</option>
+        </select>
+      </label>
+      <label>
+        Plate type:
+        <select id="typeFilter">
+          <option value="all">All</option>
+          <option value="lines">Lines (sheer/body)</option>
+          <option value="profile">Profile / elevation</option>
+          <option value="deck">Deck plan</option>
+          <option value="section">Cross‑section</option>
+          <option value="machinery">Machinery / propulsion</option>
+          <option value="armor">Armor / protection</option>
+          <option value="ordnance">Ordnance / turrets</option>
+          <option value="misc">Other</option>
+        </select>
+      </label>
+    </div>
+  </header>
+
+  <main>
+    <div id="grid" class="grid"></div>
+    <div id="noResults" class="no-results" style="display:none;">
+      No images match the current filters. Try broadening your selection.
+    </div>
+  </main>
+
+  <div id="modalBackdrop" class="modal-backdrop">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 id="modalTitle"></h2>
+        <span id="modalClose" class="modal-close">&times;</span>
+      </div>
+      <div class="modal-body">
+        <img id="modalImage" src="" alt="" />
+        <dl class="modal-meta">
+          <dt>Ship / Class</dt>
+          <dd id="modalShip"></dd>
+          <dt>Navy / Era</dt>
+          <dd id="modalNavyEra"></dd>
+          <dt>Plate type</dt>
+          <dd id="modalType"></dd>
+          <dt>Source</dt>
+          <dd id="modalSource"></dd>
+          <dt>Source link</dt>
+          <dd id="modalLink"></dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+
+  <script src="data/images.js"></script>
+  <script>
+
+
+    const gridEl = document.getElementById("grid");
+    const noResultsEl = document.getElementById("noResults");
+    const navyFilter = document.getElementById("navyFilter");
+    const typeFilter = document.getElementById("typeFilter");
+
+    const modalBackdrop = document.getElementById("modalBackdrop");
+    const modalClose = document.getElementById("modalClose");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalImage = document.getElementById("modalImage");
+    const modalShip = document.getElementById("modalShip");
+    const modalNavyEra = document.getElementById("modalNavyEra");
+    const modalType = document.getElementById("modalType");
+    const modalSource = document.getElementById("modalSource");
+    const modalLink = document.getElementById("modalLink");
+
+    function renderGrid() {
+      const navy = navyFilter.value;
+      const type = typeFilter.value;
+
+      const filtered = images.filter(img => {
+        const imgNavy = img.navy || "OTHER";
+        const imgType = img.type || "misc";
+
+        const navyOk = (navy === "all") || (imgNavy === navy);
+        const typeOk = (type === "all") || (imgType === type);
+        return navyOk && typeOk;
+      });
+
+      gridEl.innerHTML = "";
+      if (!filtered.length) {
+        noResultsEl.style.display = "block";
+        return;
+      }
+      noResultsEl.style.display = "none";
+
+      filtered.forEach(img => {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.setAttribute("data-id", img.id);
+
+        const imgEl = document.createElement("img");
+        // Fallback to local_path or url if thumb is missing
+        imgEl.src = img.thumb || img.local_path || img.url;
+        imgEl.alt = img.title;
+
+        const body = document.createElement("div");
+        body.className = "card-body";
+
+        const title = document.createElement("h3");
+        title.className = "card-title";
+        title.textContent = img.title;
+
+        const meta = document.createElement("div");
+        meta.className = "card-meta";
+        meta.innerHTML = `
+        <span class="badge">${img.navy || 'N/A'}</span>
+        <span class="badge">${img.era || 'N/A'}</span>
+        <span class="badge">${img.type || 'N/A'}</span>
+        <div>${img.ship || 'Unknown'}</div>
+      `;
+
+        body.appendChild(title);
+        body.appendChild(meta);
+        card.appendChild(imgEl);
+        card.appendChild(body);
+
+        card.addEventListener("click", () => openModal(img));
+        gridEl.appendChild(card);
+      });
+    }
+
+    function openModal(img) {
+      modalTitle.textContent = img.title;
+      modalImage.src = img.full || img.local_path || img.url;
+      modalImage.alt = img.title;
+      modalShip.textContent = img.ship || "—";
+      modalNavyEra.textContent = `${img.navy || 'N/A'} · ${img.era || 'N/A'}`;
+      modalType.textContent = img.type || 'N/A';
+      modalSource.textContent = `${img.sourceTitle || img.source || 'Unknown'} (${img.sourceYear || '?'}), ${img.sourcePage || ""}`;
+      modalLink.innerHTML = (img.sourceLink || img.url)
+        ? `<a href="${img.sourceLink || img.url}" target="_blank" rel="noopener">View source</a>`
+        : "—";
+      modalBackdrop.style.display = "flex";
+    }
+
+    function closeModal() {
+      modalBackdrop.style.display = "none";
+      modalImage.src = "";
+    }
+
+    navyFilter.addEventListener("change", renderGrid);
+    typeFilter.addEventListener("change", renderGrid);
+    modalClose.addEventListener("click", closeModal);
+    modalBackdrop.addEventListener("click", (e) => {
+      if (e.target === modalBackdrop) closeModal();
+    });
+    document.addEventListener("keyup", (e) => {
+      if (e.key === "Escape") closeModal();
+    });
+
+    renderGrid();
+  </script>
+</body>
+
+</html>
