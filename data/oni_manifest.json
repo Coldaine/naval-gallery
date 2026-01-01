@@ -1,0 +1,90 @@
+[
+  {
+    "id": "ERIC_ED250052_10",
+    "item_id": "ERIC_ED250052",
+    "leaf": "10",
+    "url": "https://archive.org/download/ERIC_ED250052/page/n10.jpg",
+    "title": "ONI Plate (Leaf 10)",
+    "source": "ERIC_ED250052",
+    "navy": "Unknown",
+    "type": "profile",
+    "local_path": "img/oni/ERIC_ED250052_10.jpg"
+  },
+  {
+    "id": "ERIC_ED250052_15",
+    "item_id": "ERIC_ED250052",
+    "leaf": "15",
+    "url": "https://archive.org/download/ERIC_ED250052/page/n15.jpg",
+    "title": "ONI Plate (Leaf 15)",
+    "source": "ERIC_ED250052",
+    "navy": "Unknown",
+    "type": "profile",
+    "local_path": "img/oni/ERIC_ED250052_15.jpg"
+  },
+  {
+    "id": "ERIC_ED250052_20",
+    "item_id": "ERIC_ED250052",
+    "leaf": "20",
+    "url": "https://archive.org/download/ERIC_ED250052/page/n20.jpg",
+    "title": "ONI Plate (Leaf 20)",
+    "source": "ERIC_ED250052",
+    "navy": "Unknown",
+    "type": "profile",
+    "local_path": "img/oni/ERIC_ED250052_20.jpg"
+  },
+  {
+    "id": "FM30-301956_10",
+    "item_id": "FM30-301956",
+    "leaf": "10",
+    "url": "https://archive.org/download/FM30-301956/page/n10.jpg",
+    "title": "ONI Plate (Leaf 10)",
+    "source": "FM30-301956",
+    "navy": "Unknown",
+    "type": "profile",
+    "local_path": "img/oni/FM30-301956_10.jpg"
+  },
+  {
+    "id": "FM30-301956_15",
+    "item_id": "FM30-301956",
+    "leaf": "15",
+    "url": "https://archive.org/download/FM30-301956/page/n15.jpg",
+    "title": "ONI Plate (Leaf 15)",
+    "source": "FM30-301956",
+    "navy": "Unknown",
+    "type": "profile",
+    "local_path": "img/oni/FM30-301956_15.jpg"
+  },
+  {
+    "id": "FM30-301956_20",
+    "item_id": "FM30-301956",
+    "leaf": "20",
+    "url": "https://archive.org/download/FM30-301956/page/n20.jpg",
+    "title": "ONI Plate (Leaf 20)",
+    "source": "FM30-301956",
+    "navy": "Unknown",
+    "type": "profile",
+    "local_path": "img/oni/FM30-301956_20.jpg"
+  },
+  {
+    "id": "FM30-301956_25",
+    "item_id": "FM30-301956",
+    "leaf": "25",
+    "url": "https://archive.org/download/FM30-301956/page/n25.jpg",
+    "title": "ONI Plate (Leaf 25)",
+    "source": "FM30-301956",
+    "navy": "Unknown",
+    "type": "profile",
+    "local_path": "img/oni/FM30-301956_25.jpg"
+  },
+  {
+    "id": "FM30-301956_30",
+    "item_id": "FM30-301956",
+    "leaf": "30",
+    "url": "https://archive.org/download/FM30-301956/page/n30.jpg",
+    "title": "ONI Plate (Leaf 30)",
+    "source": "FM30-301956",
+    "navy": "Unknown",
+    "type": "profile",
+    "local_path": "img/oni/FM30-301956_30.jpg"
+  }
+]
