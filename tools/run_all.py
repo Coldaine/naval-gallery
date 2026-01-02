@@ -25,25 +25,35 @@ def run():
     print("Aggregating manifest...")
     
     all_images = []
+    source_counts = {}
     
     # Load all produced JSONs
     files = glob.glob("data/*_manifest.json")
     for fpath in files:
         if "staging" in fpath: continue # Skip old pilot
+        source_name = os.path.basename(fpath).replace("_manifest.json", "")
         try:
             with open(fpath, "r") as f:
                 data = json.load(f)
+                count = len(data)
                 all_images.extend(data)
-        except:
-            pass
+                source_counts[source_name] = count
+        except Exception as e:
+            print(f"Error reading {fpath}: {e}")
             
     # Save master manifest
     with open("data/master_manifest.json", "w") as f:
         json.dump(all_images, f, indent=2)
         
-    print(f"Total images collected: {len(all_images)}")
+    print("\nSUMMARY:")
+    print("-" * 30)
+    for source, count in source_counts.items():
+        print(f"{source:<15}: {count} images")
+    print("-" * 30)
+    print(f"Total Unique:    {len(all_images)}")
+    print("-" * 30)
     
-    # Update data.js logic - for now we just dump to a js file the frontend can load
+    # Update data.js logic
     with open("data/images.js", "w") as f:
         f.write(f"const images = {json.dumps(all_images, indent=2)};")
 
