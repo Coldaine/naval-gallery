@@ -248,5 +248,365 @@
     "local_path": "img/loc/loc_ct0108.jpg",
     "source": "Library of Congress",
     "type": "profile"
+  },
+  {
+    "id": "289759CD-BC64-4520-AA58-E5CDB0A97467_11",
+    "url": "https://archive.org/download/289759CD-BC64-4520-AA58-E5CDB0A97467/page/n11.jpg",
+    "title": "Plate from 289759CD-BC64-4520-AA58-E5CDB0A97467 (Leaf 11)",
+    "source": "289759CD-BC64-4520-AA58-E5CDB0A97467",
+    "type": "lines",
+    "navy": "Unknown",
+    "local_path": "img/ia/289759CD-BC64-4520-AA58-E5CDB0A97467_11.jpg"
+  },
+  {
+    "id": "289759CD-BC64-4520-AA58-E5CDB0A97467_53",
+    "url": "https://archive.org/download/289759CD-BC64-4520-AA58-E5CDB0A97467/page/n53.jpg",
+    "title": "Plate from 289759CD-BC64-4520-AA58-E5CDB0A97467 (Leaf 53)",
+    "source": "289759CD-BC64-4520-AA58-E5CDB0A97467",
+    "type": "lines",
+    "navy": "Unknown",
+    "local_path": "img/ia/289759CD-BC64-4520-AA58-E5CDB0A97467_53.jpg"
+  },
+  {
+    "id": "289759CD-BC64-4520-AA58-E5CDB0A97467_58",
+    "url": "https://archive.org/download/289759CD-BC64-4520-AA58-E5CDB0A97467/page/n58.jpg",
+    "title": "Plate from 289759CD-BC64-4520-AA58-E5CDB0A97467 (Leaf 58)",
+    "source": "289759CD-BC64-4520-AA58-E5CDB0A97467",
+    "type": "lines",
+    "navy": "Unknown",
+    "local_path": "img/ia/289759CD-BC64-4520-AA58-E5CDB0A97467_58.jpg"
+  },
+  {
+    "id": "289759CD-BC64-4520-AA58-E5CDB0A97467_59",
+    "url": "https://archive.org/download/289759CD-BC64-4520-AA58-E5CDB0A97467/page/n59.jpg",
+    "title": "Plate from 289759CD-BC64-4520-AA58-E5CDB0A97467 (Leaf 59)",
+    "source": "289759CD-BC64-4520-AA58-E5CDB0A97467",
+    "type": "lines",
+    "navy": "Unknown",
+    "local_path": "img/ia/289759CD-BC64-4520-AA58-E5CDB0A97467_59.jpg"
+  },
+  {
+    "id": "289759CD-BC64-4520-AA58-E5CDB0A97467_62",
+    "url": "https://archive.org/download/289759CD-BC64-4520-AA58-E5CDB0A97467/page/n62.jpg",
+    "title": "Plate from 289759CD-BC64-4520-AA58-E5CDB0A97467 (Leaf 62)",
+    "source": "289759CD-BC64-4520-AA58-E5CDB0A97467",
+    "type": "lines",
+    "navy": "Unknown",
+    "local_path": "img/ia/289759CD-BC64-4520-AA58-E5CDB0A97467_62.jpg"
+  },
+  {
+    "id": "DTIC_AD1004552_62",
+    "url": "https://archive.org/download/DTIC_AD1004552/page/n62.jpg",
+    "title": "Plate from DTIC_AD1004552 (Leaf 62)",
+    "source": "DTIC_AD1004552",
+    "type": "lines",
+    "navy": "Unknown",
+    "local_path": "img/ia/DTIC_AD1004552_62.jpg"
+  },
+  {
+    "id": "DTIC_AD1004552_103",
+    "url": "https://archive.org/download/DTIC_AD1004552/page/n103.jpg",
+    "title": "Plate from DTIC_AD1004552 (Leaf 103)",
+    "source": "DTIC_AD1004552",
+    "type": "lines",
+    "navy": "Unknown",
+    "local_path": "img/ia/DTIC_AD1004552_103.jpg"
+  },
+  {
+    "id": "DTIC_AD1004552_109",
+    "url": "https://archive.org/download/DTIC_AD1004552/page/n109.jpg",
+    "title": "Plate from DTIC_AD1004552 (Leaf 109)",
+    "source": "DTIC_AD1004552",
+    "type": "lines",
+    "navy": "Unknown",
+    "local_path": "img/ia/DTIC_AD1004552_109.jpg"
+  },
+  {
+    "id": "DTIC_AD1004552_110",
+    "url": "https://archive.org/download/DTIC_AD1004552/page/n110.jpg",
+    "title": "Plate from DTIC_AD1004552 (Leaf 110)",
+    "source": "DTIC_AD1004552",
+    "type": "lines",
+    "navy": "Unknown",
+    "local_path": "img/ia/DTIC_AD1004552_110.jpg"
+  },
+  {
+    "id": "DTIC_AD1004552_128",
+    "url": "https://archive.org/download/DTIC_AD1004552/page/n128.jpg",
+    "title": "Plate from DTIC_AD1004552 (Leaf 128)",
+    "source": "DTIC_AD1004552",
+    "type": "lines",
+    "navy": "Unknown",
+    "local_path": "img/ia/DTIC_AD1004552_128.jpg"
+  },
+  {
+    "id": "DTIC_AD1008885_101",
+    "url": "https://archive.org/download/DTIC_AD1008885/page/n101.jpg",
+    "title": "Plate from DTIC_AD1008885 (Leaf 101)",
+    "source": "DTIC_AD1008885",
+    "type": "lines",
+    "navy": "Unknown",
+    "local_path": "img/ia/DTIC_AD1008885_101.jpg"
+  },
+  {
+    "id": "DTIC_AD1026816_30",
+    "url": "https://archive.org/download/DTIC_AD1026816/page/n30.jpg",
+    "title": "Plate from DTIC_AD1026816 (Leaf 30)",
+    "source": "DTIC_AD1026816",
+    "type": "lines",
+    "navy": "Unknown",
+    "local_path": "img/ia/DTIC_AD1026816_30.jpg"
+  },
+  {
+    "id": "DTIC_AD1026816_32",
+    "url": "https://archive.org/download/DTIC_AD1026816/page/n32.jpg",
+    "title": "Plate from DTIC_AD1026816 (Leaf 32)",
+    "source": "DTIC_AD1026816",
+    "type": "lines",
+    "navy": "Unknown",
+    "local_path": "img/ia/DTIC_AD1026816_32.jpg"
+  },
+  {
+    "id": "DTIC_ADA191146_22",
+    "url": "https://archive.org/download/DTIC_ADA191146/page/n22.jpg",
+    "title": "Plate from DTIC_ADA191146 (Leaf 22)",
+    "source": "DTIC_ADA191146",
+    "type": "lines",
+    "navy": "Unknown",
+    "local_path": "img/ia/DTIC_ADA191146_22.jpg"
+  },
+  {
+    "id": "DTIC_ADA191146_23",
+    "url": "https://archive.org/download/DTIC_ADA191146/page/n23.jpg",
+    "title": "Plate from DTIC_ADA191146 (Leaf 23)",
+    "source": "DTIC_ADA191146",
+    "type": "lines",
+    "navy": "Unknown",
+    "local_path": "img/ia/DTIC_ADA191146_23.jpg"
+  },
+  {
+    "id": "DTIC_ADA191146_26",
+    "url": "https://archive.org/download/DTIC_ADA191146/page/n26.jpg",
+    "title": "Plate from DTIC_ADA191146 (Leaf 26)",
+    "source": "DTIC_ADA191146",
+    "type": "lines",
+    "navy": "Unknown",
+    "local_path": "img/ia/DTIC_ADA191146_26.jpg"
+  },
+  {
+    "id": "DTIC_ADA191146_27",
+    "url": "https://archive.org/download/DTIC_ADA191146/page/n27.jpg",
+    "title": "Plate from DTIC_ADA191146 (Leaf 27)",
+    "source": "DTIC_ADA191146",
+    "type": "lines",
+    "navy": "Unknown",
+    "local_path": "img/ia/DTIC_ADA191146_27.jpg"
+  },
+  {
+    "id": "DTIC_ADA191146_29",
+    "url": "https://archive.org/download/DTIC_ADA191146/page/n29.jpg",
+    "title": "Plate from DTIC_ADA191146 (Leaf 29)",
+    "source": "DTIC_ADA191146",
+    "type": "lines",
+    "navy": "Unknown",
+    "local_path": "img/ia/DTIC_ADA191146_29.jpg"
+  },
+  {
+    "id": "DTIC_ADA415759_340",
+    "url": "https://archive.org/download/DTIC_ADA415759/page/n340.jpg",
+    "title": "Plate from DTIC_ADA415759 (Leaf 340)",
+    "source": "DTIC_ADA415759",
+    "type": "lines",
+    "navy": "Unknown",
+    "local_path": "img/ia/DTIC_ADA415759_340.jpg"
+  },
+  {
+    "id": "DTIC_ADA415759_576",
+    "url": "https://archive.org/download/DTIC_ADA415759/page/n576.jpg",
+    "title": "Plate from DTIC_ADA415759 (Leaf 576)",
+    "source": "DTIC_ADA415759",
+    "type": "lines",
+    "navy": "Unknown",
+    "local_path": "img/ia/DTIC_ADA415759_576.jpg"
+  },
+  {
+    "id": "DTIC_ADA415759_577",
+    "url": "https://archive.org/download/DTIC_ADA415759/page/n577.jpg",
+    "title": "Plate from DTIC_ADA415759 (Leaf 577)",
+    "source": "DTIC_ADA415759",
+    "type": "lines",
+    "navy": "Unknown",
+    "local_path": "img/ia/DTIC_ADA415759_577.jpg"
+  },
+  {
+    "id": "DTIC_ADA422411_153",
+    "url": "https://archive.org/download/DTIC_ADA422411/page/n153.jpg",
+    "title": "Plate from DTIC_ADA422411 (Leaf 153)",
+    "source": "DTIC_ADA422411",
+    "type": "lines",
+    "navy": "Unknown",
+    "local_path": "img/ia/DTIC_ADA422411_153.jpg"
+  },
+  {
+    "id": "DTIC_ADA422411_154",
+    "url": "https://archive.org/download/DTIC_ADA422411/page/n154.jpg",
+    "title": "Plate from DTIC_ADA422411 (Leaf 154)",
+    "source": "DTIC_ADA422411",
+    "type": "lines",
+    "navy": "Unknown",
+    "local_path": "img/ia/DTIC_ADA422411_154.jpg"
+  },
+  {
+    "id": "DTIC_ADA422411_155",
+    "url": "https://archive.org/download/DTIC_ADA422411/page/n155.jpg",
+    "title": "Plate from DTIC_ADA422411 (Leaf 155)",
+    "source": "DTIC_ADA422411",
+    "type": "lines",
+    "navy": "Unknown",
+    "local_path": "img/ia/DTIC_ADA422411_155.jpg"
+  },
+  {
+    "id": "DTIC_ADA422411_231",
+    "url": "https://archive.org/download/DTIC_ADA422411/page/n231.jpg",
+    "title": "Plate from DTIC_ADA422411 (Leaf 231)",
+    "source": "DTIC_ADA422411",
+    "type": "lines",
+    "navy": "Unknown",
+    "local_path": "img/ia/DTIC_ADA422411_231.jpg"
+  },
+  {
+    "id": "DTIC_ADA422411_242",
+    "url": "https://archive.org/download/DTIC_ADA422411/page/n242.jpg",
+    "title": "Plate from DTIC_ADA422411 (Leaf 242)",
+    "source": "DTIC_ADA422411",
+    "type": "lines",
+    "navy": "Unknown",
+    "local_path": "img/ia/DTIC_ADA422411_242.jpg"
+  },
+  {
+    "id": "DTIC_ADA422414_16",
+    "url": "https://archive.org/download/DTIC_ADA422414/page/n16.jpg",
+    "title": "Plate from DTIC_ADA422414 (Leaf 16)",
+    "source": "DTIC_ADA422414",
+    "type": "lines",
+    "navy": "Unknown",
+    "local_path": "img/ia/DTIC_ADA422414_16.jpg"
+  },
+  {
+    "id": "DTIC_ADA422414_18",
+    "url": "https://archive.org/download/DTIC_ADA422414/page/n18.jpg",
+    "title": "Plate from DTIC_ADA422414 (Leaf 18)",
+    "source": "DTIC_ADA422414",
+    "type": "lines",
+    "navy": "Unknown",
+    "local_path": "img/ia/DTIC_ADA422414_18.jpg"
+  },
+  {
+    "id": "DTIC_ADA422414_19",
+    "url": "https://archive.org/download/DTIC_ADA422414/page/n19.jpg",
+    "title": "Plate from DTIC_ADA422414 (Leaf 19)",
+    "source": "DTIC_ADA422414",
+    "type": "lines",
+    "navy": "Unknown",
+    "local_path": "img/ia/DTIC_ADA422414_19.jpg"
+  },
+  {
+    "id": "DTIC_ADA422414_20",
+    "url": "https://archive.org/download/DTIC_ADA422414/page/n20.jpg",
+    "title": "Plate from DTIC_ADA422414 (Leaf 20)",
+    "source": "DTIC_ADA422414",
+    "type": "lines",
+    "navy": "Unknown",
+    "local_path": "img/ia/DTIC_ADA422414_20.jpg"
+  },
+  {
+    "id": "DTIC_ADA422414_84",
+    "url": "https://archive.org/download/DTIC_ADA422414/page/n84.jpg",
+    "title": "Plate from DTIC_ADA422414 (Leaf 84)",
+    "source": "DTIC_ADA422414",
+    "type": "lines",
+    "navy": "Unknown",
+    "local_path": "img/ia/DTIC_ADA422414_84.jpg"
+  },
+  {
+    "id": "DTIC_ADA422611_247",
+    "url": "https://archive.org/download/DTIC_ADA422611/page/n247.jpg",
+    "title": "Plate from DTIC_ADA422611 (Leaf 247)",
+    "source": "DTIC_ADA422611",
+    "type": "lines",
+    "navy": "Unknown",
+    "local_path": "img/ia/DTIC_ADA422611_247.jpg"
+  },
+  {
+    "id": "DTIC_ADA422611_248",
+    "url": "https://archive.org/download/DTIC_ADA422611/page/n248.jpg",
+    "title": "Plate from DTIC_ADA422611 (Leaf 248)",
+    "source": "DTIC_ADA422611",
+    "type": "lines",
+    "navy": "Unknown",
+    "local_path": "img/ia/DTIC_ADA422611_248.jpg"
+  },
+  {
+    "id": "DTIC_ADA422611_249",
+    "url": "https://archive.org/download/DTIC_ADA422611/page/n249.jpg",
+    "title": "Plate from DTIC_ADA422611 (Leaf 249)",
+    "source": "DTIC_ADA422611",
+    "type": "lines",
+    "navy": "Unknown",
+    "local_path": "img/ia/DTIC_ADA422611_249.jpg"
+  },
+  {
+    "id": "DTIC_ADA422611_250",
+    "url": "https://archive.org/download/DTIC_ADA422611/page/n250.jpg",
+    "title": "Plate from DTIC_ADA422611 (Leaf 250)",
+    "source": "DTIC_ADA422611",
+    "type": "lines",
+    "navy": "Unknown",
+    "local_path": "img/ia/DTIC_ADA422611_250.jpg"
+  },
+  {
+    "id": "DTIC_ADA422611_251",
+    "url": "https://archive.org/download/DTIC_ADA422611/page/n251.jpg",
+    "title": "Plate from DTIC_ADA422611 (Leaf 251)",
+    "source": "DTIC_ADA422611",
+    "type": "lines",
+    "navy": "Unknown",
+    "local_path": "img/ia/DTIC_ADA422611_251.jpg"
+  },
+  {
+    "id": "DTIC_ADA435257_84",
+    "url": "https://archive.org/download/DTIC_ADA435257/page/n84.jpg",
+    "title": "Plate from DTIC_ADA435257 (Leaf 84)",
+    "source": "DTIC_ADA435257",
+    "type": "lines",
+    "navy": "Unknown",
+    "local_path": "img/ia/DTIC_ADA435257_84.jpg"
+  },
+  {
+    "id": "DTIC_ADA435257_99",
+    "url": "https://archive.org/download/DTIC_ADA435257/page/n99.jpg",
+    "title": "Plate from DTIC_ADA435257 (Leaf 99)",
+    "source": "DTIC_ADA435257",
+    "type": "lines",
+    "navy": "Unknown",
+    "local_path": "img/ia/DTIC_ADA435257_99.jpg"
+  },
+  {
+    "id": "DTIC_ADA435257_100",
+    "url": "https://archive.org/download/DTIC_ADA435257/page/n100.jpg",
+    "title": "Plate from DTIC_ADA435257 (Leaf 100)",
+    "source": "DTIC_ADA435257",
+    "type": "lines",
+    "navy": "Unknown",
+    "local_path": "img/ia/DTIC_ADA435257_100.jpg"
+  },
+  {
+    "id": "DTIC_ADA435257_101",
+    "url": "https://archive.org/download/DTIC_ADA435257/page/n101.jpg",
+    "title": "Plate from DTIC_ADA435257 (Leaf 101)",
+    "source": "DTIC_ADA435257",
+    "type": "lines",
+    "navy": "Unknown",
+    "local_path": "img/ia/DTIC_ADA435257_101.jpg"
   }
 ]
