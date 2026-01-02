@@ -14,17 +14,18 @@ def run():
     
     print("=== STARTING NAVAL HARVEST ===")
     
+    import sys
     for script in scripts:
         print(f"\n>>> Running {script}...")
         try:
-            subprocess.run(["python", script], check=False) # Don't stop on single failure
+            subprocess.run([sys.executable, script], check=False) # Use current interpreter
         except Exception as e:
             print(f"Failed to run {script}: {e}")
             
     print("\n=== HARVEST COMPLETE ===")
     print("Aggregating manifest...")
     
-    all_images = []
+    all_images_map = {}
     source_counts = {}
     
     # Load all produced JSONs
@@ -35,12 +36,17 @@ def run():
         try:
             with open(fpath, "r") as f:
                 data = json.load(f)
-                count = len(data)
-                all_images.extend(data)
+                count = 0
+                for item in data:
+                    if item['id'] not in all_images_map:
+                        all_images_map[item['id']] = item
+                        count += 1
                 source_counts[source_name] = count
         except Exception as e:
             print(f"Error reading {fpath}: {e}")
             
+    all_images = list(all_images_map.values())
+    
     # Save master manifest
     with open("data/master_manifest.json", "w") as f:
         json.dump(all_images, f, indent=2)
