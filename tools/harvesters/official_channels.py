@@ -28,18 +28,26 @@ def run():
         
         manifest = []
         
-        for item in results[:10]:
+        for item in results[:20]:
             try:
                 title = item.get('title', 'Unknown')
-                # Image URLs are in 'image_url' list, often ending in .jpg
                 img_urls = item.get('image_url', [])
                 if not img_urls: continue
                 
-                # Pick the largest one usually last or specifically named
-                best_url = img_urls[-1] 
+                # Pick the largest one that is NOT an SVG
+                best_url = None
+                for url in reversed(img_urls):
+                    if not url.endswith(".svg"):
+                        best_url = url
+                        break
                 
-                # Clean ID
-                pk = item.get('pk', 'unknown')
+                if not best_url: continue
+                
+                # Clean ID from the LoC URL: http://www.loc.gov/item/95861051/ -> 95861051
+                loc_id = item.get('id', 'unknown')
+                pk = loc_id.strip('/').split('/')[-1]
+                if not pk or pk == 'item': pk = 'unknown'
+                
                 filename = f"loc_{pk}.jpg"
                 path = os.path.join(STAGING_DIR, filename)
                 

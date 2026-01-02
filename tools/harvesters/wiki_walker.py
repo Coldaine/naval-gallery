@@ -17,7 +17,7 @@ def search_category(category, depth=0, max_depth=1):
         "list": "categorymembers",
         "cmtitle": category,
         "cmtype": "file|subcat",
-        "cmlimit": 50,
+        "cmlimit": 500,
         "format": "json"
     }
     headers = {"User-Agent": USER_AGENT}
@@ -124,12 +124,12 @@ def run():
     
     all_titles = []
     for seed in seeds:
-        all_titles.extend(search_category(seed, max_depth=1))
+        all_titles.extend(search_category(seed, max_depth=2))
         
     print(f"[*] Found {len(all_titles)} candidate files.")
     
     # Get metadata
-    items = get_file_info(all_titles[:20]) # Limit for pilot run
+    items = get_file_info(all_titles[:50]) # Increased limit
     
     # Download
     manifest = []

@@ -11,13 +11,13 @@ STAGING_DIR = "img/ia"
 os.makedirs(STAGING_DIR, exist_ok=True)
 
 def run():
-    # Broader search
-    query = 'subject:"naval architecture" AND mediatype:texts'
+    # Broader search for technical drawings, excluding common low-yield DTIC reports
+    query = '(subject:"naval architecture" OR subject:"ship plans" OR subject:"technical drawings") AND mediatype:texts AND NOT collection:dtic'
     print(f"[*] Deep Archivist searching: {query}")
     
     search = search_items(query)
     count = 0
-    max_count = 5 # Process 5 volumes
+    max_count = 10 
     
     manifest = []
     headers = {'User-Agent': 'NavalPlateHarvester/1.0'}
@@ -39,35 +39,47 @@ def run():
             volume_candidates = []
             for page in root.findall(".//page"):
                 # Heuristic: Landscape only
-                w = int(page.find("origWidth").text or 0)
-                h = int(page.find("origHeight").text or 0)
+                width_node = page.find("origWidth")
+                height_node = page.find("origHeight")
                 
-                if w > h * 1.1:
-                    leaf = page.get("leafNum")
-                    volume_candidates.append({
-                        "id": f"{iid}_{leaf}",
-                        "url": f"https://archive.org/download/{iid}/page/n{leaf}.jpg",
-                        "title": f"Plate from {iid}",
-                        "source": iid,
-                        "type": "lines", # Assumption for landscape
-                        "navy": "Unknown"
-                    })
+                if width_node is not None and height_node is not None:
+                    w = int(width_node.text or 0)
+                    h = int(height_node.text or 0)
+                    
+                    if w > h * 1.1 and w > 1000: # Ensure decent resolution
+                        leaf = page.get("leafNum")
+                        volume_candidates.append({
+                            "id": f"{iid}_{leaf}",
+                            "url": f"https://archive.org/download/{iid}/page/n{leaf}.jpg",
+                            "title": f"Plate from {iid} (Leaf {leaf})",
+                            "source": iid,
+                            "type": "lines",
+                            "navy": "Unknown"
+                        })
             
-            # Download top 3 from each valid volume
-            for c in volume_candidates[:3]:
+            if not volume_candidates:
+                print(f"    [-] No candidate plates found in {iid}")
+                continue
+
+            # Download top 5 from each valid volume
+            for c in volume_candidates[:5]:
                 path = os.path.join(STAGING_DIR, f"{c['id']}.jpg")
                 if not os.path.exists(path):
-                    print(f"    [+] Downloading {c['id']}")
+                    print(f"    [+] Downloading {c['id']} ({c['url']})")
                     img_r = requests.get(c['url'], timeout=15)
-                    with open(path, 'wb') as f:
-                        f.write(img_r.content)
+                    if img_r.status_code == 200:
+                        with open(path, 'wb') as f:
+                            f.write(img_r.content)
+                    else:
+                        print(f"    [!] Download failed: {img_r.status_code}")
+                        continue
                 c['local_path'] = f"img/ia/{c['id']}.jpg"
                 manifest.append(c)
                 
             count += 1
             
         except Exception as e:
-            print(f"    [!] Error: {e}")
+            print(f"    [!] Error processing {iid}: {e}")
             
     with open("data/ia_manifest.json", "w") as f:
         json.dump(manifest, f, indent=2)
