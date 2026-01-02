@@ -56,7 +56,7 @@ def run():
     for source, count in source_counts.items():
         print(f"{source:<15}: {count} images")
     print("-" * 30)
-    print(f"Total Unique:    {len(all_images)}")
+    print(f"Total Unique Images (Deduplicated): {len(all_images)}")
     print("-" * 30)
     
     # Update data.js logic

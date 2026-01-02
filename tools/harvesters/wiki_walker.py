@@ -1,6 +1,7 @@
 import requests
 import os
 import json
+import re
 
 # Wikimedia Commons Harvester
 # Targets "Ship_plans" categories
@@ -77,6 +78,10 @@ def get_file_info(titles):
                     
                     desc = meta.get('ImageDescription', {}).get('value', 'Unknown')
                     date = meta.get('DateTimeOriginal', {}).get('value', 'Unknown')
+                    
+                    # Strip HTML from date if present
+                    if date and "<" in date:
+                        date = re.sub(r'<[^>]*>', '', date).strip()
                     
                     output = {
                         "id": f"wiki_{page['pageid']}",

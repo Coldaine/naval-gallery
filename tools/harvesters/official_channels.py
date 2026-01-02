@@ -37,16 +37,19 @@ def run():
                 # Pick the largest one that is NOT an SVG
                 best_url = None
                 for url in reversed(img_urls):
-                    if not url.endswith(".svg"):
+                    if not url.lower().split('?')[0].endswith(".svg"):
                         best_url = url
                         break
                 
                 if not best_url: continue
                 
                 # Clean ID from the LoC URL: http://www.loc.gov/item/95861051/ -> 95861051
-                loc_id = item.get('id', 'unknown')
+                loc_id = item.get('id', item.get('pk', 'unknown'))
                 pk = loc_id.strip('/').split('/')[-1]
-                if not pk or pk == 'item': pk = 'unknown'
+                if not pk or pk == 'item':
+                    # Try to get from item URL as fallback
+                    item_url = item.get('url', '')
+                    pk = item_url.strip('/').split('/')[-1] if item_url else 'unknown'
                 
                 filename = f"loc_{pk}.jpg"
                 path = os.path.join(STAGING_DIR, filename)
