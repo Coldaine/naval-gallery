@@ -37,6 +37,7 @@ def init_db():
         -- Rich extraction (Phase 2)
         ship_name TEXT,
         ship_class TEXT,
+        shipyard TEXT,
         displacement TEXT,
         armament TEXT,
         dimensions TEXT,
@@ -111,10 +112,12 @@ def get_pending(limit=None):
     cursor = conn.cursor()
     
     query = "SELECT * FROM images WHERE analysis_status = 'pending'"
+    params = []
     if limit:
-        query += f" LIMIT {limit}"
+        query += " LIMIT ?"
+        params.append(limit)
         
-    cursor.execute(query)
+    cursor.execute(query, params)
     rows = cursor.fetchall()
     conn.close()
     return [dict(row) for row in rows]
@@ -145,6 +148,7 @@ def save_analysis(img_id, results, error=None):
                 era = ?,
                 ship_name = ?,
                 ship_class = ?,
+                shipyard = ?,
                 displacement = ?,
                 armament = ?,
                 dimensions = ?,
@@ -161,6 +165,7 @@ def save_analysis(img_id, results, error=None):
             results.get('era'),
             results.get('ship_name'),
             results.get('ship_class'),
+            results.get('shipyard'),
             results.get('displacement'),
             results.get('armament'),
             results.get('dimensions'),
