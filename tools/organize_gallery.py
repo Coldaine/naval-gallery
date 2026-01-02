@@ -10,13 +10,15 @@ import db
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
-def sanitize(text):
-    "Sanitize text for use in filenames/paths."
+def sanitize(text, length=30):
+    "Sanitize text and truncate for use in filenames/paths."
     if not text:
         return "Unknown"
     # Basic sanitization
     keep = (" ", ".", "_", "-")
-    return "".join(c for c in text if c.isalnum() or c in keep).strip().replace(" ", "_")
+    clean = "".join(c for c in text if c.isalnum() or c in keep).strip().replace(" ", "_")
+    # Truncate and strip trailing dots/underscores
+    return clean[:length].rstrip("._")
 
 def organize_images(limit=None, copy_only=False, dry_run=False):
     # 1. Get images ready to organize
