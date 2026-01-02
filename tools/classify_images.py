@@ -53,6 +53,7 @@ Respond ONLY in a comprehensive JSON object:
   "ship_name": "...",
   "ship_class": "...",
   "hull_number": "...",
+  "shipyard": "...",
   "dimensions": "...",
   "armament": "...",
   "displacement": "...",

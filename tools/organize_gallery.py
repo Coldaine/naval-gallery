@@ -11,16 +11,43 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 logger = logging.getLogger(__name__)
 
 def sanitize(text, length=30):
-    "Sanitize text and truncate for use in filenames/paths."
+    """
+    Sanitize text for use in filenames and directory paths.
+    
+    Removes potentially dangerous characters (like dots and slashes) to prevent
+    Path Traversal vulnerabilities. Truncates long segments to ensure filesystem
+    compatibility.
+    
+    Args:
+        text (str): The text to sanitize.
+        length (int): Maximum length of the sanitized segment.
+        
+    Returns:
+        str: A safe, filesystem-friendly string.
+    """
     if not text:
         return "Unknown"
-    # Basic sanitization
-    keep = (" ", ".", "_", "-")
-    clean = "".join(c for c in text if c.isalnum() or c in keep).strip().replace(" ", "_")
-    # Truncate and strip trailing dots/underscores
-    return clean[:length].rstrip("._")
+    
+    # Strictly allow only alphanumeric, spaces, hyphens and underscores
+    # Specifically remove '.' to prevent path traversal
+    clean = "".join(c for c in text if c.isalnum() or c in (" ", "_", "-")).strip()
+    clean = clean.replace(" ", "_")
+    
+    # Truncate and strip trailing underscores
+    return clean[:length].rstrip("_")
 
 def organize_images(limit=None, copy_only=False, dry_run=False):
+    """
+    Orchestrates the physical organization of classified images.
+    
+    Fetches successfully analyzed images from the database and moves or copies
+    them into a structured directory hierarchy based on their metadata.
+    
+    Args:
+        limit (int, optional): Maximum number of images to process.
+        copy_only (bool): If True, copy files instead of moving them.
+        dry_run (bool): If True, log intended actions without modifying the disk.
+    """
     # 1. Get images ready to organize
     pending = db.get_ready_to_organize(limit=limit)
     if not pending:
@@ -34,7 +61,13 @@ def organize_images(limit=None, copy_only=False, dry_run=False):
     
     for item in pending:
         img_id = item['id']
-        old_path = Path(item['local_path'])
+        old_path_str = item.get('local_path')
+        if not old_path_str:
+            logger.warning(f"[-] No local path for image {img_id}")
+            db.update_organization(img_id, "Unknown", status='error')
+            continue
+            
+        old_path = Path(old_path_str)
         
         # Absolute path handling
         abs_old_path = base_dir / old_path if not old_path.is_absolute() else old_path
@@ -44,11 +77,11 @@ def organize_images(limit=None, copy_only=False, dry_run=False):
             db.update_organization(img_id, str(old_path), status='error')
             continue
 
-        # 2. Construct New Path
-        navy = sanitize(item['navy'])
-        ship_type = sanitize(item['ship_type'])
-        view_type = sanitize(item['view_type'])
-        ship_name = sanitize(item['ship_name'])
+        # 2. Construct New Path with robust sanitization
+        navy = sanitize(item.get('navy', 'Unknown'))
+        ship_type = sanitize(item.get('ship_type', 'Unknown'))
+        view_type = sanitize(item.get('view_type', 'Unknown'))
+        ship_name = sanitize(item.get('ship_name', 'Unknown'))
         
         # img/classified/{navy}/{ship_type}/{view_type}/
         target_dir = classified_base / navy / ship_type / view_type
@@ -60,7 +93,11 @@ def organize_images(limit=None, copy_only=False, dry_run=False):
         target_path = target_dir / new_filename
         
         # Relative path for DB storage (relative to project root)
-        rel_target_path = target_path.relative_to(base_dir)
+        try:
+            rel_target_path = target_path.relative_to(base_dir)
+        except ValueError:
+            # Fallback if target is somehow outside our base
+            rel_target_path = target_path
 
         if dry_run:
             logger.info(f"[DRY RUN] Would move {abs_old_path} -> {target_path}")
