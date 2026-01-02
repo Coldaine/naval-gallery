@@ -28,6 +28,9 @@ def init_db():
         analyzed_at TIMESTAMP,
         error_message TEXT,
         
+        -- Organization state
+        organization_status TEXT DEFAULT 'pending', -- pending | organized | error
+        
         -- Classification results (Phase 1)
         ship_type TEXT,
         view_type TEXT,
@@ -37,10 +40,20 @@ def init_db():
         -- Rich extraction (Phase 2)
         ship_name TEXT,
         ship_class TEXT,
+        hull_number TEXT,
         shipyard TEXT,
         displacement TEXT,
         armament TEXT,
         dimensions TEXT,
+        
+        -- Enhanced fields (New)
+        propulsion TEXT,
+        armor TEXT,
+        speed TEXT,
+        complement TEXT,
+        launch_date TEXT,
+        commission_date TEXT,
+        reasoning TEXT,
         
         confidence TEXT,
         raw_response TEXT,
@@ -148,10 +161,18 @@ def save_analysis(img_id, results, error=None):
                 era = ?,
                 ship_name = ?,
                 ship_class = ?,
+                hull_number = ?,
                 shipyard = ?,
                 displacement = ?,
                 armament = ?,
                 dimensions = ?,
+                propulsion = ?,
+                armor = ?,
+                speed = ?,
+                complement = ?,
+                launch_date = ?,
+                commission_date = ?,
+                reasoning = ?,
                 confidence = ?,
                 raw_response = ?,
                 notes = ?,
@@ -165,16 +186,54 @@ def save_analysis(img_id, results, error=None):
             results.get('era'),
             results.get('ship_name'),
             results.get('ship_class'),
+            results.get('hull_number'),
             results.get('shipyard'),
             results.get('displacement'),
             results.get('armament'),
             results.get('dimensions'),
+            results.get('propulsion'),
+            results.get('armor'),
+            results.get('speed'),
+            results.get('complement'),
+            results.get('launch_date'),
+            results.get('commission_date'),
+            results.get('reasoning'),
             results.get('confidence'),
             json.dumps(results.get('raw_response')),
             results.get('notes'),
             img_id
         ))
         
+    conn.commit()
+    conn.close()
+
+def get_ready_to_organize(limit=None):
+    "Get images that are complete but not yet organized."
+    conn = sqlite3.connect(DB_PATH)
+    conn.row_factory = sqlite3.Row
+    cursor = conn.cursor()
+    
+    query = "SELECT * FROM images WHERE analysis_status = 'complete' AND organization_status = 'pending'"
+    params = []
+    if limit:
+        query += " LIMIT ?"
+        params.append(limit)
+        
+    cursor.execute(query, params)
+    rows = cursor.fetchall()
+    conn.close()
+    return [dict(row) for row in rows]
+
+def update_organization(img_id, new_path, status='organized'):
+    "Update organization status and physical path."
+    conn = sqlite3.connect(DB_PATH)
+    cursor = conn.cursor()
+    cursor.execute("""
+        UPDATE images SET 
+            organization_status = ?,
+            local_path = ?
+        WHERE id = ?
+    """, (status, new_path, img_id))
     conn.commit()
     conn.close()
 
@@ -189,6 +248,7 @@ def export_manifest(output_path):
     
     data = [dict(row) for row in rows]
     
+    # Clean up raw_response for JSON export
     for entry in data:
         if entry.get('raw_response'):
             try:
