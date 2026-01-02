@@ -12,3 +12,14 @@ __pycache__/
 # OS
 .DS_Store
 Thumbs.db
+
+# Project Assets
+img/*/
+!img/placeholder.jpg
+data/*.db
+data/gallery.db
+*.log
+
+# Analysis Artifacts
+data/enriched_manifest.json
+data/classified_manifest.json
