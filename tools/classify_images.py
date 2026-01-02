@@ -22,6 +22,7 @@ Analyze this naval technical drawing or photograph. Identify:
 2. View type (plan view, profile/side view, lines drawing, photograph, cutaway, other)
 3. Navy of origin if identifiable (e.g., USN, Royal Navy, IJN, Kriegsmarine)
 4. Era (pre-dreadnought, dreadnought, interwar, WWII, post-war)
+5. Reasoning: Briefly explain why you identified the ship/class as you did (visible features, armament arrangement).
 
 Respond ONLY in JSON format:
 {
@@ -29,31 +30,41 @@ Respond ONLY in JSON format:
   "view_type": "...",
   "navy": "...",
   "era": "...",
+  "reasoning": "...",
   "confidence": "low|medium|high",
   "notes": "..."
 }
 """
 
 PHASE_2_PROMPT = """
-Examine this naval technical drawing in detail. Extract ALL visible technical information:
+Examine this naval technical drawing in extreme detail. Extract ALL visible technical information:
 
-1. Ship identification: Individual ship name, class, hull number.
-2. Dimensions: Length, beam, draft (if labeled).
-3. Armament: Main battery, secondary guns, torpedo tubes, etc.
-4. Displacement: Standard and full load tonnage (if labeled).
-5. Technical features: Propulsion, armor notes, specific design dates.
-6. Attribution: Artist name, source collection, or archive labels.
+1. Identification: Ship name, class, hull number, shipyard.
+2. Physical Specs: Length (LOA/LPP), beam, draft, displacement (std/full/light).
+3. Performance: Propulsion type (boilers/engines), HP, number of shafts, speed (knots).
+4. Protection: Belt armor, deck, turrets, conning tower thicknesses.
+5. Combat: Main battery (caliber/number), secondary/dual-purpose, AA, torpedoes, aircraft.
+6. History: Launch date, commission date, specific era.
+7. Context: Identify the exact view (starboard profile, plan view, body plan, etc.).
+8. Reasoning: Briefly explain your identification logic (visible names, specific superstructure features, armament arrangement).
 
-Respond ONLY in detailed JSON format:
+Respond ONLY in a comprehensive JSON object:
 {
   "ship_name": "...",
   "ship_class": "...",
   "hull_number": "...",
+  "shipyard": "...",
   "dimensions": "...",
   "armament": "...",
   "displacement": "...",
-  "technical_features": "...",
-  "attribution": "...",
+  "propulsion": "...",
+  "armor": "...",
+  "speed": "...",
+  "complement": "...",
+  "launch_date": "...",
+  "commission_date": "...",
+  "view_type": "...",
+  "reasoning": "...",
   "confidence": "low|medium|high",
   "notes": "..."
 }
