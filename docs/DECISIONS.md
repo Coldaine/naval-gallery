@@ -92,9 +92,35 @@
 
 ---
 
+## ADR-006: External Image Storage (Google Drive)
+
+**Context**: Images would bloat the git repository (hundreds of MB). Need a way to store images that syncs across devices.
+
+**Decision**: Store images externally in Google Drive, with auto-detection of mount points.
+
+**Implementation**:
+- Config module (`tools/config.py`) auto-detects `~/GoogleDrive/`, `~/Google Drive/`, etc.
+- Creates `NavalGallery/` subfolder automatically
+- Manifests in git reference images via relative paths (`wiki/wiki_12345.jpg`)
+- Environment variable `NAVAL_GALLERY_IMAGE_DIR` overrides auto-detection
+
+**Rationale**:
+- Keeps git repository lightweight (~100KB vs hundreds of MB)
+- Google Drive provides automatic cloud sync and backup
+- Same manifests work on any machine with Google Drive mounted
+- Separation of concerns: code in git, assets in cloud storage
+
+**Consequence**: 
+- Requires Google Drive mounted (or env var set) to run harvesters
+- Images are not version-controlled (acceptable for large binary assets)
+- Manifests ARE version-controlled as the source of truth for metadata
+
+---
+
 ## Known Issues
 
 1. **Duplicate IDs**: Some LOC images all named `loc_unknown.jpg`—need unique ID generation
 2. **Noise in harvests**: Heuristics catch ~60-70% relevant images; rest is noise
 3. **Missing metadata**: Many images lack ship name, era, navy—requires research
-4. **No staging workflow**: Currently no separation between harvested and curated images
+4. ~~**No staging workflow**~~: RESOLVED - Images now stored externally with Phase 1/2 classification
+
