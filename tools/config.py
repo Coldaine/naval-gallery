@@ -2,15 +2,72 @@
 Naval Gallery Configuration
 
 Image storage is external to the git repository (e.g., Google Drive).
-Set the NAVAL_GALLERY_IMAGE_DIR environment variable to your storage path.
 
-Example:
-    export NAVAL_GALLERY_IMAGE_DIR="/home/coldaine/Google Drive/WarshipImages"
+Auto-detection: The config will automatically look for common Google Drive
+mount points. You can override by setting NAVAL_GALLERY_IMAGE_DIR.
+
+Priority:
+1. NAVAL_GALLERY_IMAGE_DIR environment variable (if set)
+2. Auto-detected Google Drive path + /NavalGallery subfolder
+3. Error with helpful instructions
 """
 
 import os
 import sys
 from pathlib import Path
+from typing import Optional
+
+# ============================================================================
+# AUTO-DETECTION CONFIGURATION
+# ============================================================================
+
+# Common Google Drive mount point patterns (relative to home directory)
+# These are checked in order - first match wins
+GOOGLE_DRIVE_PATTERNS = [
+    "GoogleDrive",           # rclone default
+    "Google Drive",          # GNOME/Nautilus
+    "google-drive",          # Some Linux naming
+    ".google-drive",         # Hidden mount
+]
+
+# Subfolder within Google Drive for Naval Gallery images
+NAVAL_GALLERY_SUBFOLDER = "NavalGallery"
+
+
+def _find_google_drive() -> Optional[Path]:
+    """
+    Auto-detect Google Drive mount point.
+    
+    Checks common mount locations relative to the user's home directory.
+    Returns the first valid path found, or None if not detected.
+    """
+    home = Path.home()
+    
+    for pattern in GOOGLE_DRIVE_PATTERNS:
+        candidate = home / pattern
+        if candidate.exists() and candidate.is_dir():
+            return candidate
+    
+    # Also check GVFS mounts (GNOME virtual filesystem)
+    gvfs_path = Path(f"/run/user/{os.getuid()}/gvfs")
+    if gvfs_path.exists():
+        for item in gvfs_path.iterdir():
+            if "google" in item.name.lower():
+                return item
+    
+    return None
+
+
+def _get_or_create_naval_gallery_dir(google_drive: Path) -> Path:
+    """
+    Get or create the NavalGallery subfolder within Google Drive.
+    """
+    naval_dir = google_drive / NAVAL_GALLERY_SUBFOLDER
+    if not naval_dir.exists():
+        print(f"[*] Creating Naval Gallery directory: {naval_dir}")
+        naval_dir.mkdir(parents=True, exist_ok=True)
+    return naval_dir
+
 
 # ============================================================================
 # IMAGE STORAGE CONFIGURATION
@@ -20,48 +77,55 @@ def get_image_dir() -> Path:
     """
     Get the configured image storage directory.
     
+    Priority:
+    1. NAVAL_GALLERY_IMAGE_DIR env var (explicit override)
+    2. Auto-detected Google Drive + NavalGallery subfolder
+    3. Error with instructions
+    
     Raises:
-        SystemExit: If NAVAL_GALLERY_IMAGE_DIR is not set or path doesn't exist.
+        SystemExit: If no valid storage directory can be found.
     """
+    # Priority 1: Explicit environment variable
     image_dir = os.environ.get("NAVAL_GALLERY_IMAGE_DIR")
     
-    if not image_dir:
-        print("\n" + "=" * 70)
-        print("ERROR: Image storage directory not configured!")
-        print("=" * 70)
-        print()
-        print("Naval Gallery stores images externally (e.g., in Google Drive).")
-        print("Please set the NAVAL_GALLERY_IMAGE_DIR environment variable:")
-        print()
-        print('    export NAVAL_GALLERY_IMAGE_DIR="/path/to/your/Google Drive/WarshipImages"')
-        print()
-        print("You can add this to your shell profile (~/.bashrc or ~/.zshrc).")
-        print("=" * 70 + "\n")
-        sys.exit(1)
+    if image_dir:
+        path = Path(image_dir)
+        if not path.exists():
+            print("\n" + "=" * 70)
+            print("ERROR: NAVAL_GALLERY_IMAGE_DIR does not exist!")
+            print("=" * 70)
+            print()
+            print(f"Path: {path}")
+            print()
+            print("Please create this directory or update the environment variable.")
+            print("=" * 70 + "\n")
+            sys.exit(1)
+        return path
     
-    path = Path(image_dir)
+    # Priority 2: Auto-detect Google Drive
+    google_drive = _find_google_drive()
     
-    if not path.exists():
-        print("\n" + "=" * 70)
-        print("ERROR: Image storage directory does not exist!")
-        print("=" * 70)
-        print()
-        print(f"Path: {path}")
-        print()
-        print("Please create this directory or update NAVAL_GALLERY_IMAGE_DIR.")
-        print("=" * 70 + "\n")
-        sys.exit(1)
+    if google_drive:
+        return _get_or_create_naval_gallery_dir(google_drive)
     
-    if not path.is_dir():
-        print("\n" + "=" * 70)
-        print("ERROR: NAVAL_GALLERY_IMAGE_DIR is not a directory!")
-        print("=" * 70)
-        print()
-        print(f"Path: {path}")
-        print("=" * 70 + "\n")
-        sys.exit(1)
-    
-    return path
+    # Priority 3: Error with instructions
+    print("\n" + "=" * 70)
+    print("ERROR: Image storage directory not configured!")
+    print("=" * 70)
+    print()
+    print("Naval Gallery stores images externally (e.g., in Google Drive).")
+    print()
+    print("OPTION 1: Mount Google Drive")
+    print("  The config will auto-detect these locations in your home directory:")
+    for pattern in GOOGLE_DRIVE_PATTERNS:
+        print(f"    ~/{pattern}/")
+    print()
+    print("OPTION 2: Set environment variable manually")
+    print('  export NAVAL_GALLERY_IMAGE_DIR="/path/to/your/image/storage"')
+    print()
+    print("Add the export to ~/.bashrc or ~/.zshrc to persist it.")
+    print("=" * 70 + "\n")
+    sys.exit(1)
 
 
 def get_staging_dir(source_name: str) -> Path:
@@ -104,8 +168,13 @@ TOOLS_DIR = PROJECT_ROOT / "tools"
 
 def validate_config():
     """Run validation - call this at script start to fail fast."""
-    get_image_dir()  # Will exit if not configured
-    print(f"[*] Image storage: {get_image_dir()}")
+    img_dir = get_image_dir()
+    
+    # Check if it was auto-detected or explicit
+    if os.environ.get("NAVAL_GALLERY_IMAGE_DIR"):
+        print(f"[*] Image storage (env): {img_dir}")
+    else:
+        print(f"[*] Image storage (auto-detected): {img_dir}")
 
 
 if __name__ == "__main__":
