@@ -11,7 +11,7 @@ from config import get_staging_dir, get_relative_path, validate_config, DATA_DIR
 # Wikimedia Commons Harvester
 # Targets "Ship_plans" categories
 
-USER_AGENT = "NavalPlateHarvester/1.0 (contact: user@example.com)"
+USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
 
 def search_category(category, depth=0, max_depth=1):
     print(f"[*] Scanning Category: {category} (Depth: {depth})")
@@ -109,16 +109,20 @@ def download_file(item, staging_dir):
         item['local_path'] = get_relative_path("wiki", filename)
         return item
         
-    print(f"[+] Downloading: {item['title']}")
+    print(f"[+] Downloading: {item['title']} from {item['url']}")
     headers = {"User-Agent": USER_AGENT}
     try:
         r = requests.get(item['url'], headers=headers, timeout=20)
-        with open(path, 'wb') as f:
-            f.write(r.content)
-        item['local_path'] = get_relative_path("wiki", filename)
-        return item
+        if r.status_code == 200:
+            with open(path, 'wb') as f:
+                f.write(r.content)
+            item['local_path'] = get_relative_path("wiki", filename)
+            return item
+        else:
+            print(f"[!] Download failed for {item['id']}: Status {r.status_code}")
+            return None
     except Exception as e:
-        print(f"[!] Download failed: {e}")
+        print(f"[!] Download exception for {item['id']}: {e}")
         return None
 
 def run():
@@ -142,7 +146,7 @@ def run():
     print(f"[*] Found {len(all_titles)} candidate files.")
     
     # Get metadata
-    items = get_file_info(all_titles[:50]) # Increased limit
+    items = get_file_info(all_titles[:500]) # Increased limit
     
     # Download
     manifest = []

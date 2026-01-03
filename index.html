@@ -264,12 +264,13 @@
           <dd id="modalShip"></dd>
           <dt>Navy / Era</dt>
           <dd id="modalNavyEra"></dd>
-          <dt>Plate type</dt>
-          <dd id="modalType"></dd>
+          <dt>Analysis Details</dt>
+          <dd id="modalAnalysis"></dd>
           <dt>Source</dt>
           <dd id="modalSource"></dd>
           <dt>Source link</dt>
           <dd id="modalLink"></dd>
+
         </dl>
       </div>
     </div>
@@ -320,9 +321,11 @@
         card.setAttribute("data-id", img.id);
 
         const imgEl = document.createElement("img");
-        // Fallback to local_path or url if thumb is missing
-        imgEl.src = img.thumb || img.local_path || img.url;
+        // Images are accessed via the 'img' symlink
+        const src = img.thumb || (img.local_path ? 'img/' + img.local_path : null) || img.url;
+        imgEl.src = src;
         imgEl.alt = img.title;
+
 
         const body = document.createElement("div");
         body.className = "card-body";
@@ -335,10 +338,11 @@
         meta.className = "card-meta";
         meta.innerHTML = `
         <span class="badge">${img.navy || 'N/A'}</span>
-        <span class="badge">${img.era || 'N/A'}</span>
-        <span class="badge">${img.type || 'N/A'}</span>
-        <div>${img.ship || 'Unknown'}</div>
+        <span class="badge">${img.ship_type || img.type || 'N/A'}</span>
+        ${img.extraction_tier ? `<span class="badge" style="border-color: #ffd700; color: #ffd700">T${img.extraction_tier}</span>` : ''}
+        <div>${img.ship_name || img.ship || 'Unknown'}</div>
       `;
+
 
         body.appendChild(title);
         body.appendChild(meta);
@@ -352,12 +356,28 @@
 
     function openModal(img) {
       modalTitle.textContent = img.title;
-      modalImage.src = img.full || img.local_path || img.url;
+      const src = img.full || (img.local_path ? 'img/' + img.local_path : null) || img.url;
+      modalImage.src = src;
       modalImage.alt = img.title;
-      modalShip.textContent = img.ship || "—";
+      modalShip.textContent = (img.ship_name || img.ship || "—") + (img.ship_class ? ` (${img.ship_class})` : "");
       modalNavyEra.textContent = `${img.navy || 'N/A'} · ${img.era || 'N/A'}`;
-      modalType.textContent = img.type || 'N/A';
+
+      const analysisHtml = `
+        <div style="margin-bottom: 0.5rem">
+          <span class="badge">${img.view_type || 'N/A'}</span>
+          <span class="badge">${img.view_style || 'N/A'}</span>
+          <span class="badge">${img.orientation || 'N/A'}</span>
+        </div>
+        <div>
+          <strong>Tier ${img.extraction_tier || '?'}:</strong> 
+          ${img.suitable_for_extraction ? '✅ Suitable' : '❌ Unsuitable'} 
+          (${img.silhouette_clarity || 'unknown'} clarity)
+        </div>
+      `;
+      document.getElementById("modalAnalysis").innerHTML = analysisHtml;
+
       modalSource.textContent = `${img.sourceTitle || img.source || 'Unknown'} (${img.sourceYear || '?'}), ${img.sourcePage || ""}`;
+
       modalLink.innerHTML = (img.sourceLink || img.url)
         ? `<a href="${img.sourceLink || img.url}" target="_blank" rel="noopener">View source</a>`
         : "—";

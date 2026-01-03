@@ -14,8 +14,11 @@ __pycache__/
 Thumbs.db
 
 # Project Assets
-img/*/
+img
+img/
 !img/placeholder.jpg
+
+
 data/*.db
 data/gallery.db
 *.log

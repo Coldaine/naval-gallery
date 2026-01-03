@@ -8,7 +8,7 @@
     "source": "ERIC_ED250052",
     "navy": "Unknown",
     "type": "profile",
-    "local_path": "img/oni/ERIC_ED250052_10.jpg"
+    "local_path": "oni/ERIC_ED250052_10.jpg"
   },
   {
     "id": "ERIC_ED250052_15",
@@ -19,7 +19,7 @@
     "source": "ERIC_ED250052",
     "navy": "Unknown",
     "type": "profile",
-    "local_path": "img/oni/ERIC_ED250052_15.jpg"
+    "local_path": "oni/ERIC_ED250052_15.jpg"
   },
   {
     "id": "ERIC_ED250052_20",
@@ -30,7 +30,7 @@
     "source": "ERIC_ED250052",
     "navy": "Unknown",
     "type": "profile",
-    "local_path": "img/oni/ERIC_ED250052_20.jpg"
+    "local_path": "oni/ERIC_ED250052_20.jpg"
   },
   {
     "id": "FM30-301956_10",
@@ -41,7 +41,7 @@
     "source": "FM30-301956",
     "navy": "Unknown",
     "type": "profile",
-    "local_path": "img/oni/FM30-301956_10.jpg"
+    "local_path": "oni/FM30-301956_10.jpg"
   },
   {
     "id": "FM30-301956_15",
@@ -52,7 +52,7 @@
     "source": "FM30-301956",
     "navy": "Unknown",
     "type": "profile",
-    "local_path": "img/oni/FM30-301956_15.jpg"
+    "local_path": "oni/FM30-301956_15.jpg"
   },
   {
     "id": "FM30-301956_20",
@@ -63,7 +63,7 @@
     "source": "FM30-301956",
     "navy": "Unknown",
     "type": "profile",
-    "local_path": "img/oni/FM30-301956_20.jpg"
+    "local_path": "oni/FM30-301956_20.jpg"
   },
   {
     "id": "FM30-301956_25",
@@ -74,7 +74,7 @@
     "source": "FM30-301956",
     "navy": "Unknown",
     "type": "profile",
-    "local_path": "img/oni/FM30-301956_25.jpg"
+    "local_path": "oni/FM30-301956_25.jpg"
   },
   {
     "id": "FM30-301956_30",
@@ -85,6 +85,6 @@
     "source": "FM30-301956",
     "navy": "Unknown",
     "type": "profile",
-    "local_path": "img/oni/FM30-301956_30.jpg"
+    "local_path": "oni/FM30-301956_30.jpg"
   }
 ]
