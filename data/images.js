@@ -1,7 +1,7 @@
 const images = [
   {
     "id": "wiki_47040388",
-    "local_path": "img/wiki/wiki_47040388.jpg",
+    "local_path": "wiki/wiki_47040388.jpg",
     "url": "https://upload.wikimedia.org/wikipedia/commons/5/52/Balticprincess_2008gaplan.jpg",
     "source": "Wikimedia Commons",
     "title": "Balticprincess 2008gaplan.jpg",
@@ -48,7 +48,7 @@ const images = [
   },
   {
     "id": "wiki_80554798",
-    "local_path": "img/wiki/wiki_80554798.jpg",
+    "local_path": "wiki/wiki_80554798.jpg",
     "url": "https://upload.wikimedia.org/wikipedia/commons/a/af/North_Carolina_and_Delaware_-_Profile_Showing_Method_of_Strengthening_-_NARA_-_68865606.jpg",
     "source": "Wikimedia Commons",
     "title": "North Carolina and Delaware - Profile Showing Method of Strengthening - NARA - 68865606.jpg",
@@ -95,7 +95,7 @@ const images = [
   },
   {
     "id": "ERIC_ED250052_10",
-    "local_path": "img/oni/ERIC_ED250052_10.jpg",
+    "local_path": "oni/ERIC_ED250052_10.jpg",
     "url": "https://archive.org/download/ERIC_ED250052/page/n10.jpg",
     "source": "ERIC_ED250052",
     "title": "ONI Plate (Leaf 10)",
@@ -151,7 +151,7 @@ const images = [
   },
   {
     "id": "ERIC_ED250052_15",
-    "local_path": "img/oni/ERIC_ED250052_15.jpg",
+    "local_path": "oni/ERIC_ED250052_15.jpg",
     "url": "https://archive.org/download/ERIC_ED250052/page/n15.jpg",
     "source": "ERIC_ED250052",
     "title": "ONI Plate (Leaf 15)",
@@ -207,7 +207,7 @@ const images = [
   },
   {
     "id": "ERIC_ED250052_20",
-    "local_path": "img/oni/ERIC_ED250052_20.jpg",
+    "local_path": "oni/ERIC_ED250052_20.jpg",
     "url": "https://archive.org/download/ERIC_ED250052/page/n20.jpg",
     "source": "ERIC_ED250052",
     "title": "ONI Plate (Leaf 20)",
@@ -263,7 +263,7 @@ const images = [
   },
   {
     "id": "FM30-301956_10",
-    "local_path": "img/oni/FM30-301956_10.jpg",
+    "local_path": "oni/FM30-301956_10.jpg",
     "url": "https://archive.org/download/FM30-301956/page/n10.jpg",
     "source": "FM30-301956",
     "title": "ONI Plate (Leaf 10)",
@@ -319,7 +319,7 @@ const images = [
   },
   {
     "id": "FM30-301956_15",
-    "local_path": "img/oni/FM30-301956_15.jpg",
+    "local_path": "oni/FM30-301956_15.jpg",
     "url": "https://archive.org/download/FM30-301956/page/n15.jpg",
     "source": "FM30-301956",
     "title": "ONI Plate (Leaf 15)",
@@ -375,7 +375,7 @@ const images = [
   },
   {
     "id": "FM30-301956_20",
-    "local_path": "img/oni/FM30-301956_20.jpg",
+    "local_path": "oni/FM30-301956_20.jpg",
     "url": "https://archive.org/download/FM30-301956/page/n20.jpg",
     "source": "FM30-301956",
     "title": "ONI Plate (Leaf 20)",
@@ -431,7 +431,7 @@ const images = [
   },
   {
     "id": "FM30-301956_25",
-    "local_path": "img/oni/FM30-301956_25.jpg",
+    "local_path": "oni/FM30-301956_25.jpg",
     "url": "https://archive.org/download/FM30-301956/page/n25.jpg",
     "source": "FM30-301956",
     "title": "ONI Plate (Leaf 25)",
@@ -487,7 +487,7 @@ const images = [
   },
   {
     "id": "FM30-301956_30",
-    "local_path": "img/oni/FM30-301956_30.jpg",
+    "local_path": "oni/FM30-301956_30.jpg",
     "url": "https://archive.org/download/FM30-301956/page/n30.jpg",
     "source": "FM30-301956",
     "title": "ONI Plate (Leaf 30)",
@@ -543,7 +543,7 @@ const images = [
   },
   {
     "id": "loc_2023708114",
-    "local_path": "img/loc/loc_2023708114.jpg",
+    "local_path": "loc/loc_2023708114.jpg",
     "url": "https://tile.loc.gov/storage-services/service/pnp/ade/2a02000/2a02900/2a02919r.jpg#h=640&w=567",
     "source": "Library of Congress",
     "title": "The pie rat ship",
@@ -599,7 +599,7 @@ const images = [
   },
   {
     "id": "loc_2023708221",
-    "local_path": "img/loc/loc_2023708221.jpg",
+    "local_path": "loc/loc_2023708221.jpg",
     "url": "https://tile.loc.gov/storage-services/service/pnp/ade/2a03000/2a03500/2a03521r.jpg#h=640&w=462",
     "source": "Library of Congress",
     "title": "[Cass Gilbert sleeping on ship deck, S.S. Friesland]",
@@ -655,7 +655,7 @@ const images = [
   },
   {
     "id": "loc_2022646364",
-    "local_path": "img/loc/loc_2022646364.jpg",
+    "local_path": "loc/loc_2022646364.jpg",
     "url": "https://tile.loc.gov/storage-services/service/pnp/ppmsca/83900/83910v.jpg#h=726&w=1024",
     "source": "Library of Congress",
     "title": "[Submarine (\"Submarine Vessel, Submarine Bombs and Mode of Attack\") for the United States government.] [View of ships and mines]",
@@ -711,7 +711,7 @@ const images = [
   },
   {
     "id": "loc_2022646369",
-    "local_path": "img/loc/loc_2022646369.jpg",
+    "local_path": "loc/loc_2022646369.jpg",
     "url": "https://tile.loc.gov/storage-services/service/pnp/ppmsca/83900/83915v.jpg#h=768&w=1024",
     "source": "Library of Congress",
     "title": "[Submarine (\"Submarine Vessel, Submarine Bombs and Mode of Attack\") for the United States government.] [Manner of arranging ropes]",
@@ -767,7 +767,7 @@ const images = [
   },
   {
     "id": "loc_2017878479",
-    "local_path": "img/loc/loc_2017878479.jpg",
+    "local_path": "loc/loc_2017878479.jpg",
     "url": "https://tile.loc.gov/storage-services/service/pnp/fsac/1a35000/1a35200/1a35229v.jpg#h=828&w=1024",
     "source": "Library of Congress",
     "title": "Welder making boilers for a ship, Combustion Engineering Co., Chattanooga, Tenn.",
@@ -823,7 +823,7 @@ const images = [
   },
   {
     "id": "loc_2017878480",
-    "local_path": "img/loc/loc_2017878480.jpg",
+    "local_path": "loc/loc_2017878480.jpg",
     "url": "https://tile.loc.gov/storage-services/service/pnp/fsac/1a35000/1a35200/1a35230v.jpg#h=837&w=1024",
     "source": "Library of Congress",
     "title": "Welder making boilers for a ship, Combustion Engineering Co., Chattanooga, Tenn.",
@@ -879,7 +879,7 @@ const images = [
   },
   {
     "id": "loc_2017878481",
-    "local_path": "img/loc/loc_2017878481.jpg",
+    "local_path": "loc/loc_2017878481.jpg",
     "url": "https://tile.loc.gov/storage-services/service/pnp/fsac/1a35000/1a35200/1a35231v.jpg#h=834&w=1024",
     "source": "Library of Congress",
     "title": "Welder making boilers for a ship, Combustion Engineering Co., Chattanooga, Tenn.",
@@ -935,7 +935,7 @@ const images = [
   },
   {
     "id": "loc_2017878482",
-    "local_path": "img/loc/loc_2017878482.jpg",
+    "local_path": "loc/loc_2017878482.jpg",
     "url": "https://tile.loc.gov/storage-services/service/pnp/fsac/1a35000/1a35200/1a35232v.jpg#h=828&w=1024",
     "source": "Library of Congress",
     "title": "Welder making boilers for a ship, Combustion Engineering Co., Chattanooga, Tenn.",
@@ -991,7 +991,7 @@ const images = [
   },
   {
     "id": "loc_2017878483",
-    "local_path": "img/loc/loc_2017878483.jpg",
+    "local_path": "loc/loc_2017878483.jpg",
     "url": "https://tile.loc.gov/storage-services/service/pnp/fsac/1a35000/1a35200/1a35233v.jpg#h=829&w=1024",
     "source": "Library of Congress",
     "title": "Welders making boilers for a ship, Combustion Engineering Co., Chattanooga, Tenn.",
@@ -1047,7 +1047,7 @@ const images = [
   },
   {
     "id": "loc_2016801014",
-    "local_path": "img/loc/loc_2016801014.jpg",
+    "local_path": "loc/loc_2016801014.jpg",
     "url": "https://tile.loc.gov/storage-services/service/pnp/det/4a00000/4a06000/4a06600/4a06658v.jpg#h=814&w=1024",
     "source": "Library of Congress",
     "title": "Great Lakes Engineering Co.",
@@ -1103,7 +1103,7 @@ const images = [
   },
   {
     "id": "loc_2021671151",
-    "local_path": "img/loc/loc_2021671151.jpg",
+    "local_path": "loc/loc_2021671151.jpg",
     "url": "https://tile.loc.gov/image-services/iiif/service:gdc:gdcwdl:wd:l_:20:95:1:wdl_20951:amrc-cohn-page023-2/full/pct:100/0/default.jpg#h=4607&w=2826",
     "source": "Library of Congress",
     "title": "Alaska Engineering Commission Mess Hall in Ship Creek Settlement, Anchorage, Alaska. July 10, 1915.",
@@ -1159,7 +1159,7 @@ const images = [
   },
   {
     "id": "loc_il0606",
-    "local_path": "img/loc/loc_il0606.jpg",
+    "local_path": "loc/loc_il0606.jpg",
     "url": "https://tile.loc.gov/storage-services/service/pnp/habshaer/il/il0600/il0606/photos/037002pv.jpg#h=831&w=1024",
     "source": "Library of Congress",
     "title": "Romeo Road, Sanitary & Ship Canal Bridge, Spanning Sanitary & Ship Canal, Romeoville, Will County, IL",
@@ -1215,7 +1215,7 @@ const images = [
   },
   {
     "id": "loc_ma0708",
-    "local_path": "img/loc/loc_ma0708.jpg",
+    "local_path": "loc/loc_ma0708.jpg",
     "url": "https://tile.loc.gov/storage-services/service/pnp/habshaer/ma/ma0700/ma0708/photos/078922pv.jpg#h=1024&w=729",
     "source": "Library of Congress",
     "title": "Ship Chandler's Shop, Federal & North Streets, Salem, Essex County, MA",
@@ -1271,7 +1271,7 @@ const images = [
   },
   {
     "id": "loc_2016812947",
-    "local_path": "img/loc/loc_2016812947.jpg",
+    "local_path": "loc/loc_2016812947.jpg",
     "url": "https://tile.loc.gov/storage-services/service/pnp/det/4a20000/4a21000/4a21300/4a21312v.jpg#h=825&w=1024",
     "source": "Library of Congress",
     "title": "[Great Lakes Engineering Works, Ecorse, Mich.]",
@@ -1327,7 +1327,7 @@ const images = [
   },
   {
     "id": "loc_il0976",
-    "local_path": "img/loc/loc_il0976.jpg",
+    "local_path": "loc/loc_il0976.jpg",
     "url": "https://tile.loc.gov/storage-services/service/pnp/habshaer/il/il0900/il0976/sheet/00001v.jpg#h=683&w=1024",
     "source": "Library of Congress",
     "title": "Chicago Sanitary and Ship Canal, Extends 33.9 miles from Chicago to Lockport, Chicago, Cook County, IL",
@@ -1383,7 +1383,7 @@ const images = [
   },
   {
     "id": "loc_2021671132",
-    "local_path": "img/loc/loc_2021671132.jpg",
+    "local_path": "loc/loc_2021671132.jpg",
     "url": "https://tile.loc.gov/image-services/iiif/service:gdc:gdcwdl:wd:l_:20:93:2:wdl_20932:amrc-cohn-page014-1/full/pct:100/0/default.jpg#h=3603&w=4434",
     "source": "Library of Congress",
     "title": "View of Ship Creek Tent Town from the Hill on the North Side of the Town, Showing Wooden Alaska Engineering Commission Headquarters in Anchorage, Alaska. June 27, 1915.",
@@ -1439,7 +1439,7 @@ const images = [
   },
   {
     "id": "loc_2016812946",
-    "local_path": "img/loc/loc_2016812946.jpg",
+    "local_path": "loc/loc_2016812946.jpg",
     "url": "https://tile.loc.gov/storage-services/service/pnp/det/4a20000/4a21000/4a21300/4a21309v.jpg#h=823&w=1024",
     "source": "Library of Congress",
     "title": "[Great Lakes Engineering Works, Ecorse, Mich.]",
@@ -1495,7 +1495,7 @@ const images = [
   },
   {
     "id": "loc_ct0108",
-    "local_path": "img/loc/loc_ct0108.jpg",
+    "local_path": "loc/loc_ct0108.jpg",
     "url": "https://tile.loc.gov/storage-services/service/pnp/habshaer/ct/ct0100/ct0108/sheet/00001v.jpg#h=683&w=1024",
     "source": "Library of Congress",
     "title": "Thames Tow Boat Company, Ships Cradle No. 3, Uncasville, New London, New London County, CT",
@@ -1551,7 +1551,7 @@ const images = [
   },
   {
     "id": "289759CD-BC64-4520-AA58-E5CDB0A97467_11",
-    "local_path": "img/ia/289759CD-BC64-4520-AA58-E5CDB0A97467_11.jpg",
+    "local_path": "ia/289759CD-BC64-4520-AA58-E5CDB0A97467_11.jpg",
     "url": "https://archive.org/download/289759CD-BC64-4520-AA58-E5CDB0A97467/page/n11.jpg",
     "source": "289759CD-BC64-4520-AA58-E5CDB0A97467",
     "title": "Plate from 289759CD-BC64-4520-AA58-E5CDB0A97467 (Leaf 11)",
@@ -1607,7 +1607,7 @@ const images = [
   },
   {
     "id": "289759CD-BC64-4520-AA58-E5CDB0A97467_53",
-    "local_path": "img/ia/289759CD-BC64-4520-AA58-E5CDB0A97467_53.jpg",
+    "local_path": "ia/289759CD-BC64-4520-AA58-E5CDB0A97467_53.jpg",
     "url": "https://archive.org/download/289759CD-BC64-4520-AA58-E5CDB0A97467/page/n53.jpg",
     "source": "289759CD-BC64-4520-AA58-E5CDB0A97467",
     "title": "Plate from 289759CD-BC64-4520-AA58-E5CDB0A97467 (Leaf 53)",
@@ -1663,7 +1663,7 @@ const images = [
   },
   {
     "id": "289759CD-BC64-4520-AA58-E5CDB0A97467_58",
-    "local_path": "img/ia/289759CD-BC64-4520-AA58-E5CDB0A97467_58.jpg",
+    "local_path": "ia/289759CD-BC64-4520-AA58-E5CDB0A97467_58.jpg",
     "url": "https://archive.org/download/289759CD-BC64-4520-AA58-E5CDB0A97467/page/n58.jpg",
     "source": "289759CD-BC64-4520-AA58-E5CDB0A97467",
     "title": "Plate from 289759CD-BC64-4520-AA58-E5CDB0A97467 (Leaf 58)",
@@ -1719,7 +1719,7 @@ const images = [
   },
   {
     "id": "289759CD-BC64-4520-AA58-E5CDB0A97467_59",
-    "local_path": "img/ia/289759CD-BC64-4520-AA58-E5CDB0A97467_59.jpg",
+    "local_path": "ia/289759CD-BC64-4520-AA58-E5CDB0A97467_59.jpg",
     "url": "https://archive.org/download/289759CD-BC64-4520-AA58-E5CDB0A97467/page/n59.jpg",
     "source": "289759CD-BC64-4520-AA58-E5CDB0A97467",
     "title": "Plate from 289759CD-BC64-4520-AA58-E5CDB0A97467 (Leaf 59)",
@@ -1775,7 +1775,7 @@ const images = [
   },
   {
     "id": "289759CD-BC64-4520-AA58-E5CDB0A97467_62",
-    "local_path": "img/ia/289759CD-BC64-4520-AA58-E5CDB0A97467_62.jpg",
+    "local_path": "ia/289759CD-BC64-4520-AA58-E5CDB0A97467_62.jpg",
     "url": "https://archive.org/download/289759CD-BC64-4520-AA58-E5CDB0A97467/page/n62.jpg",
     "source": "289759CD-BC64-4520-AA58-E5CDB0A97467",
     "title": "Plate from 289759CD-BC64-4520-AA58-E5CDB0A97467 (Leaf 62)",
@@ -1831,7 +1831,7 @@ const images = [
   },
   {
     "id": "DTIC_AD1004552_62",
-    "local_path": "img/ia/DTIC_AD1004552_62.jpg",
+    "local_path": "ia/DTIC_AD1004552_62.jpg",
     "url": "https://archive.org/download/DTIC_AD1004552/page/n62.jpg",
     "source": "DTIC_AD1004552",
     "title": "Plate from DTIC_AD1004552 (Leaf 62)",
@@ -1887,7 +1887,7 @@ const images = [
   },
   {
     "id": "DTIC_AD1004552_103",
-    "local_path": "img/ia/DTIC_AD1004552_103.jpg",
+    "local_path": "ia/DTIC_AD1004552_103.jpg",
     "url": "https://archive.org/download/DTIC_AD1004552/page/n103.jpg",
     "source": "DTIC_AD1004552",
     "title": "Plate from DTIC_AD1004552 (Leaf 103)",
@@ -1943,7 +1943,7 @@ const images = [
   },
   {
     "id": "DTIC_AD1004552_109",
-    "local_path": "img/ia/DTIC_AD1004552_109.jpg",
+    "local_path": "ia/DTIC_AD1004552_109.jpg",
     "url": "https://archive.org/download/DTIC_AD1004552/page/n109.jpg",
     "source": "DTIC_AD1004552",
     "title": "Plate from DTIC_AD1004552 (Leaf 109)",
@@ -1999,7 +1999,7 @@ const images = [
   },
   {
     "id": "DTIC_AD1004552_110",
-    "local_path": "img/ia/DTIC_AD1004552_110.jpg",
+    "local_path": "ia/DTIC_AD1004552_110.jpg",
     "url": "https://archive.org/download/DTIC_AD1004552/page/n110.jpg",
     "source": "DTIC_AD1004552",
     "title": "Plate from DTIC_AD1004552 (Leaf 110)",
@@ -2055,7 +2055,7 @@ const images = [
   },
   {
     "id": "DTIC_AD1004552_128",
-    "local_path": "img/ia/DTIC_AD1004552_128.jpg",
+    "local_path": "ia/DTIC_AD1004552_128.jpg",
     "url": "https://archive.org/download/DTIC_AD1004552/page/n128.jpg",
     "source": "DTIC_AD1004552",
     "title": "Plate from DTIC_AD1004552 (Leaf 128)",
@@ -2111,7 +2111,7 @@ const images = [
   },
   {
     "id": "DTIC_AD1008885_101",
-    "local_path": "img/ia/DTIC_AD1008885_101.jpg",
+    "local_path": "ia/DTIC_AD1008885_101.jpg",
     "url": "https://archive.org/download/DTIC_AD1008885/page/n101.jpg",
     "source": "DTIC_AD1008885",
     "title": "Plate from DTIC_AD1008885 (Leaf 101)",
@@ -2167,7 +2167,7 @@ const images = [
   },
   {
     "id": "DTIC_AD1026816_30",
-    "local_path": "img/ia/DTIC_AD1026816_30.jpg",
+    "local_path": "ia/DTIC_AD1026816_30.jpg",
     "url": "https://archive.org/download/DTIC_AD1026816/page/n30.jpg",
     "source": "DTIC_AD1026816",
     "title": "Plate from DTIC_AD1026816 (Leaf 30)",
@@ -2223,7 +2223,7 @@ const images = [
   },
   {
     "id": "DTIC_AD1026816_32",
-    "local_path": "img/ia/DTIC_AD1026816_32.jpg",
+    "local_path": "ia/DTIC_AD1026816_32.jpg",
     "url": "https://archive.org/download/DTIC_AD1026816/page/n32.jpg",
     "source": "DTIC_AD1026816",
     "title": "Plate from DTIC_AD1026816 (Leaf 32)",
@@ -2279,7 +2279,7 @@ const images = [
   },
   {
     "id": "DTIC_ADA191146_22",
-    "local_path": "img/ia/DTIC_ADA191146_22.jpg",
+    "local_path": "ia/DTIC_ADA191146_22.jpg",
     "url": "https://archive.org/download/DTIC_ADA191146/page/n22.jpg",
     "source": "DTIC_ADA191146",
     "title": "Plate from DTIC_ADA191146 (Leaf 22)",
@@ -2335,7 +2335,7 @@ const images = [
   },
   {
     "id": "DTIC_ADA191146_23",
-    "local_path": "img/ia/DTIC_ADA191146_23.jpg",
+    "local_path": "ia/DTIC_ADA191146_23.jpg",
     "url": "https://archive.org/download/DTIC_ADA191146/page/n23.jpg",
     "source": "DTIC_ADA191146",
     "title": "Plate from DTIC_ADA191146 (Leaf 23)",
@@ -2391,7 +2391,7 @@ const images = [
   },
   {
     "id": "DTIC_ADA191146_26",
-    "local_path": "img/ia/DTIC_ADA191146_26.jpg",
+    "local_path": "ia/DTIC_ADA191146_26.jpg",
     "url": "https://archive.org/download/DTIC_ADA191146/page/n26.jpg",
     "source": "DTIC_ADA191146",
     "title": "Plate from DTIC_ADA191146 (Leaf 26)",
@@ -2447,7 +2447,7 @@ const images = [
   },
   {
     "id": "DTIC_ADA191146_27",
-    "local_path": "img/ia/DTIC_ADA191146_27.jpg",
+    "local_path": "ia/DTIC_ADA191146_27.jpg",
     "url": "https://archive.org/download/DTIC_ADA191146/page/n27.jpg",
     "source": "DTIC_ADA191146",
     "title": "Plate from DTIC_ADA191146 (Leaf 27)",
@@ -2503,7 +2503,7 @@ const images = [
   },
   {
     "id": "DTIC_ADA191146_29",
-    "local_path": "img/ia/DTIC_ADA191146_29.jpg",
+    "local_path": "ia/DTIC_ADA191146_29.jpg",
     "url": "https://archive.org/download/DTIC_ADA191146/page/n29.jpg",
     "source": "DTIC_ADA191146",
     "title": "Plate from DTIC_ADA191146 (Leaf 29)",
@@ -2559,7 +2559,7 @@ const images = [
   },
   {
     "id": "DTIC_ADA415759_340",
-    "local_path": "img/ia/DTIC_ADA415759_340.jpg",
+    "local_path": "ia/DTIC_ADA415759_340.jpg",
     "url": "https://archive.org/download/DTIC_ADA415759/page/n340.jpg",
     "source": "DTIC_ADA415759",
     "title": "Plate from DTIC_ADA415759 (Leaf 340)",
@@ -2615,7 +2615,7 @@ const images = [
   },
   {
     "id": "DTIC_ADA415759_576",
-    "local_path": "img/ia/DTIC_ADA415759_576.jpg",
+    "local_path": "ia/DTIC_ADA415759_576.jpg",
     "url": "https://archive.org/download/DTIC_ADA415759/page/n576.jpg",
     "source": "DTIC_ADA415759",
     "title": "Plate from DTIC_ADA415759 (Leaf 576)",
@@ -2671,7 +2671,7 @@ const images = [
   },
   {
     "id": "DTIC_ADA415759_577",
-    "local_path": "img/ia/DTIC_ADA415759_577.jpg",
+    "local_path": "ia/DTIC_ADA415759_577.jpg",
     "url": "https://archive.org/download/DTIC_ADA415759/page/n577.jpg",
     "source": "DTIC_ADA415759",
     "title": "Plate from DTIC_ADA415759 (Leaf 577)",
@@ -2727,7 +2727,7 @@ const images = [
   },
   {
     "id": "DTIC_ADA422411_153",
-    "local_path": "img/ia/DTIC_ADA422411_153.jpg",
+    "local_path": "ia/DTIC_ADA422411_153.jpg",
     "url": "https://archive.org/download/DTIC_ADA422411/page/n153.jpg",
     "source": "DTIC_ADA422411",
     "title": "Plate from DTIC_ADA422411 (Leaf 153)",
@@ -2783,7 +2783,7 @@ const images = [
   },
   {
     "id": "DTIC_ADA422411_154",
-    "local_path": "img/ia/DTIC_ADA422411_154.jpg",
+    "local_path": "ia/DTIC_ADA422411_154.jpg",
     "url": "https://archive.org/download/DTIC_ADA422411/page/n154.jpg",
     "source": "DTIC_ADA422411",
     "title": "Plate from DTIC_ADA422411 (Leaf 154)",
@@ -2839,7 +2839,7 @@ const images = [
   },
   {
     "id": "DTIC_ADA422411_155",
-    "local_path": "img/ia/DTIC_ADA422411_155.jpg",
+    "local_path": "ia/DTIC_ADA422411_155.jpg",
     "url": "https://archive.org/download/DTIC_ADA422411/page/n155.jpg",
     "source": "DTIC_ADA422411",
     "title": "Plate from DTIC_ADA422411 (Leaf 155)",
@@ -2895,7 +2895,7 @@ const images = [
   },
   {
     "id": "DTIC_ADA422411_231",
-    "local_path": "img/ia/DTIC_ADA422411_231.jpg",
+    "local_path": "ia/DTIC_ADA422411_231.jpg",
     "url": "https://archive.org/download/DTIC_ADA422411/page/n231.jpg",
     "source": "DTIC_ADA422411",
     "title": "Plate from DTIC_ADA422411 (Leaf 231)",
@@ -2951,7 +2951,7 @@ const images = [
   },
   {
     "id": "DTIC_ADA422411_242",
-    "local_path": "img/ia/DTIC_ADA422411_242.jpg",
+    "local_path": "ia/DTIC_ADA422411_242.jpg",
     "url": "https://archive.org/download/DTIC_ADA422411/page/n242.jpg",
     "source": "DTIC_ADA422411",
     "title": "Plate from DTIC_ADA422411 (Leaf 242)",
@@ -3007,7 +3007,7 @@ const images = [
   },
   {
     "id": "DTIC_ADA422414_16",
-    "local_path": "img/ia/DTIC_ADA422414_16.jpg",
+    "local_path": "ia/DTIC_ADA422414_16.jpg",
     "url": "https://archive.org/download/DTIC_ADA422414/page/n16.jpg",
     "source": "DTIC_ADA422414",
     "title": "Plate from DTIC_ADA422414 (Leaf 16)",
@@ -3063,7 +3063,7 @@ const images = [
   },
   {
     "id": "DTIC_ADA422414_18",
-    "local_path": "img/ia/DTIC_ADA422414_18.jpg",
+    "local_path": "ia/DTIC_ADA422414_18.jpg",
     "url": "https://archive.org/download/DTIC_ADA422414/page/n18.jpg",
     "source": "DTIC_ADA422414",
     "title": "Plate from DTIC_ADA422414 (Leaf 18)",
@@ -3119,7 +3119,7 @@ const images = [
   },
   {
     "id": "DTIC_ADA422414_19",
-    "local_path": "img/ia/DTIC_ADA422414_19.jpg",
+    "local_path": "ia/DTIC_ADA422414_19.jpg",
     "url": "https://archive.org/download/DTIC_ADA422414/page/n19.jpg",
     "source": "DTIC_ADA422414",
     "title": "Plate from DTIC_ADA422414 (Leaf 19)",
@@ -3175,7 +3175,7 @@ const images = [
   },
   {
     "id": "DTIC_ADA422414_20",
-    "local_path": "img/ia/DTIC_ADA422414_20.jpg",
+    "local_path": "ia/DTIC_ADA422414_20.jpg",
     "url": "https://archive.org/download/DTIC_ADA422414/page/n20.jpg",
     "source": "DTIC_ADA422414",
     "title": "Plate from DTIC_ADA422414 (Leaf 20)",
@@ -3231,7 +3231,7 @@ const images = [
   },
   {
     "id": "DTIC_ADA422414_84",
-    "local_path": "img/ia/DTIC_ADA422414_84.jpg",
+    "local_path": "ia/DTIC_ADA422414_84.jpg",
     "url": "https://archive.org/download/DTIC_ADA422414/page/n84.jpg",
     "source": "DTIC_ADA422414",
     "title": "Plate from DTIC_ADA422414 (Leaf 84)",
@@ -3287,7 +3287,7 @@ const images = [
   },
   {
     "id": "DTIC_ADA422611_247",
-    "local_path": "img/ia/DTIC_ADA422611_247.jpg",
+    "local_path": "ia/DTIC_ADA422611_247.jpg",
     "url": "https://archive.org/download/DTIC_ADA422611/page/n247.jpg",
     "source": "DTIC_ADA422611",
     "title": "Plate from DTIC_ADA422611 (Leaf 247)",
@@ -3343,7 +3343,7 @@ const images = [
   },
   {
     "id": "DTIC_ADA422611_248",
-    "local_path": "img/ia/DTIC_ADA422611_248.jpg",
+    "local_path": "ia/DTIC_ADA422611_248.jpg",
     "url": "https://archive.org/download/DTIC_ADA422611/page/n248.jpg",
     "source": "DTIC_ADA422611",
     "title": "Plate from DTIC_ADA422611 (Leaf 248)",
@@ -3399,7 +3399,7 @@ const images = [
   },
   {
     "id": "DTIC_ADA422611_249",
-    "local_path": "img/ia/DTIC_ADA422611_249.jpg",
+    "local_path": "ia/DTIC_ADA422611_249.jpg",
     "url": "https://archive.org/download/DTIC_ADA422611/page/n249.jpg",
     "source": "DTIC_ADA422611",
     "title": "Plate from DTIC_ADA422611 (Leaf 249)",
@@ -3455,7 +3455,7 @@ const images = [
   },
   {
     "id": "DTIC_ADA422611_250",
-    "local_path": "img/ia/DTIC_ADA422611_250.jpg",
+    "local_path": "ia/DTIC_ADA422611_250.jpg",
     "url": "https://archive.org/download/DTIC_ADA422611/page/n250.jpg",
     "source": "DTIC_ADA422611",
     "title": "Plate from DTIC_ADA422611 (Leaf 250)",
@@ -3511,7 +3511,7 @@ const images = [
   },
   {
     "id": "DTIC_ADA422611_251",
-    "local_path": "img/ia/DTIC_ADA422611_251.jpg",
+    "local_path": "ia/DTIC_ADA422611_251.jpg",
     "url": "https://archive.org/download/DTIC_ADA422611/page/n251.jpg",
     "source": "DTIC_ADA422611",
     "title": "Plate from DTIC_ADA422611 (Leaf 251)",
@@ -3567,7 +3567,7 @@ const images = [
   },
   {
     "id": "DTIC_ADA435257_84",
-    "local_path": "img/ia/DTIC_ADA435257_84.jpg",
+    "local_path": "ia/DTIC_ADA435257_84.jpg",
     "url": "https://archive.org/download/DTIC_ADA435257/page/n84.jpg",
     "source": "DTIC_ADA435257",
     "title": "Plate from DTIC_ADA435257 (Leaf 84)",
@@ -3623,7 +3623,7 @@ const images = [
   },
   {
     "id": "DTIC_ADA435257_99",
-    "local_path": "img/ia/DTIC_ADA435257_99.jpg",
+    "local_path": "ia/DTIC_ADA435257_99.jpg",
     "url": "https://archive.org/download/DTIC_ADA435257/page/n99.jpg",
     "source": "DTIC_ADA435257",
     "title": "Plate from DTIC_ADA435257 (Leaf 99)",
@@ -3679,7 +3679,7 @@ const images = [
   },
   {
     "id": "DTIC_ADA435257_100",
-    "local_path": "img/ia/DTIC_ADA435257_100.jpg",
+    "local_path": "ia/DTIC_ADA435257_100.jpg",
     "url": "https://archive.org/download/DTIC_ADA435257/page/n100.jpg",
     "source": "DTIC_ADA435257",
     "title": "Plate from DTIC_ADA435257 (Leaf 100)",
@@ -3735,7 +3735,7 @@ const images = [
   },
   {
     "id": "DTIC_ADA435257_101",
-    "local_path": "img/ia/DTIC_ADA435257_101.jpg",
+    "local_path": "ia/DTIC_ADA435257_101.jpg",
     "url": "https://archive.org/download/DTIC_ADA435257/page/n101.jpg",
     "source": "DTIC_ADA435257",
     "title": "Plate from DTIC_ADA435257 (Leaf 101)",
@@ -3791,7 +3791,7 @@ const images = [
   },
   {
     "id": "tdp_obere_ansicht_oberdeck_100dpi",
-    "local_path": "img/dreadnought/obere_ansicht_oberdeck_100dpi.jpg",
+    "local_path": "dreadnought/obere_ansicht_oberdeck_100dpi.jpg",
     "url": "http://www.dreadnoughtproject.org/plans/KM_Emden_1925/obere_ansicht_oberdeck_100dpi.jpg",
     "source": "Dreadnought Project",
     "title": "Dreadnought Project: obere_ansicht_oberdeck_100dpi.jpg",
@@ -3847,7 +3847,7 @@ const images = [
   },
   {
     "id": "tdp_entwurf_fur_ein_minenschiff2_100dpi",
-    "local_path": "img/dreadnought/entwurf_fur_ein_minenschiff2_100dpi.jpg",
+    "local_path": "dreadnought/entwurf_fur_ein_minenschiff2_100dpi.jpg",
     "url": "http://www.dreadnoughtproject.org/plans/KM_Entwurfs_Minenschiff_1937/entwurf_fur_ein_minenschiff2_100dpi.jpg",
     "source": "Dreadnought Project",
     "title": "Dreadnought Project: entwurf_fur_ein_minenschiff2_100dpi.jpg",
@@ -3903,7 +3903,7 @@ const images = [
   },
   {
     "id": "tdp_entwurf_fur_ein_minenschiff3_100dpi",
-    "local_path": "img/dreadnought/entwurf_fur_ein_minenschiff3_100dpi.jpg",
+    "local_path": "dreadnought/entwurf_fur_ein_minenschiff3_100dpi.jpg",
     "url": "http://www.dreadnoughtproject.org/plans/KM_Entwurfs_Minenschiff_1937/entwurf_fur_ein_minenschiff3_100dpi.jpg",
     "source": "Dreadnought Project",
     "title": "Dreadnought Project: entwurf_fur_ein_minenschiff3_100dpi.jpg",
@@ -3959,7 +3959,7 @@ const images = [
   },
   {
     "id": "tdp_entwurf_fur_ein_minenschiff4_100dpi",
-    "local_path": "img/dreadnought/entwurf_fur_ein_minenschiff4_100dpi.jpg",
+    "local_path": "dreadnought/entwurf_fur_ein_minenschiff4_100dpi.jpg",
     "url": "http://www.dreadnoughtproject.org/plans/KM_Entwurfs_Minenschiff_1937/entwurf_fur_ein_minenschiff4_100dpi.jpg",
     "source": "Dreadnought Project",
     "title": "Dreadnought Project: entwurf_fur_ein_minenschiff4_100dpi.jpg",
@@ -4015,7 +4015,7 @@ const images = [
   },
   {
     "id": "tdp_entwurf_fur_ein_minenschiff5_100dpi",
-    "local_path": "img/dreadnought/entwurf_fur_ein_minenschiff5_100dpi.jpg",
+    "local_path": "dreadnought/entwurf_fur_ein_minenschiff5_100dpi.jpg",
     "url": "http://www.dreadnoughtproject.org/plans/KM_Entwurfs_Minenschiff_1937/entwurf_fur_ein_minenschiff5_100dpi.jpg",
     "source": "Dreadnought Project",
     "title": "Dreadnought Project: entwurf_fur_ein_minenschiff5_100dpi.jpg",
@@ -4071,7 +4071,7 @@ const images = [
   },
   {
     "id": "tdp_entwurf_fur_ein_minenschiff_100dpi",
-    "local_path": "img/dreadnought/entwurf_fur_ein_minenschiff_100dpi.jpg",
+    "local_path": "dreadnought/entwurf_fur_ein_minenschiff_100dpi.jpg",
     "url": "http://www.dreadnoughtproject.org/plans/KM_Entwurfs_Minenschiff_1937/entwurf_fur_ein_minenschiff_100dpi.jpg",
     "source": "Dreadnought Project",
     "title": "Dreadnought Project: entwurf_fur_ein_minenschiff_100dpi.jpg",
@@ -4127,7 +4127,7 @@ const images = [
   },
   {
     "id": "tdp_entwurfs_skizze_01_100dpi",
-    "local_path": "img/dreadnought/entwurfs_skizze_01_100dpi.jpg",
+    "local_path": "dreadnought/entwurfs_skizze_01_100dpi.jpg",
     "url": "http://www.dreadnoughtproject.org/plans/KM_Entwurfs_Minenschiff_1937/entwurfs_skizze_01_100dpi.jpg",
     "source": "Dreadnought Project",
     "title": "Dreadnought Project: entwurfs_skizze_01_100dpi.jpg",
@@ -4183,7 +4183,7 @@ const images = [
   },
   {
     "id": "tdp_minenschiff_A-D_100dpi",
-    "local_path": "img/dreadnought/minenschiff_A-D_100dpi.jpg",
+    "local_path": "dreadnought/minenschiff_A-D_100dpi.jpg",
     "url": "http://www.dreadnoughtproject.org/plans/KM_Entwurfs_Minenschiff_1937/minenschiff_A-D_100dpi.jpg",
     "source": "Dreadnought Project",
     "title": "Dreadnought Project: minenschiff_A-D_100dpi.jpg",
@@ -4239,7 +4239,7 @@ const images = [
   },
   {
     "id": "tdp_einrichtungs_querschnitte_100dpi",
-    "local_path": "img/dreadnought/einrichtungs_querschnitte_100dpi.jpg",
+    "local_path": "dreadnought/einrichtungs_querschnitte_100dpi.jpg",
     "url": "http://www.dreadnoughtproject.org/plans/KM_FrBoote_1940/einrichtungs_querschnitte_100dpi.jpg",
     "source": "Dreadnought Project",
     "title": "Dreadnought Project: einrichtungs_querschnitte_100dpi.jpg",
@@ -4295,7 +4295,7 @@ const images = [
   },
   {
     "id": "tdp_wasserschleier_anlage_100dpi",
-    "local_path": "img/dreadnought/wasserschleier_anlage_100dpi.jpg",
+    "local_path": "dreadnought/wasserschleier_anlage_100dpi.jpg",
     "url": "http://www.dreadnoughtproject.org/plans/KM_Graf_Zeppelin_1939/wasserschleier_anlage_100dpi.jpg",
     "source": "Dreadnought Project",
     "title": "Dreadnought Project: wasserschleier_anlage_100dpi.jpg",
@@ -4351,7 +4351,7 @@ const images = [
   },
   {
     "id": "tdp_Entwurf_K_100dpi",
-    "local_path": "img/dreadnought/Entwurf_K_100dpi.jpg",
+    "local_path": "dreadnought/Entwurf_K_100dpi.jpg",
     "url": "http://www.dreadnoughtproject.org/plans/KM_Kanonenboot_39_1939/Entwurf_K_100dpi.jpg",
     "source": "Dreadnought Project",
     "title": "Dreadnought Project: Entwurf_K_100dpi.jpg",
@@ -4407,7 +4407,7 @@ const images = [
   },
   {
     "id": "tdp_algemeen_plan_100dpi",
-    "local_path": "img/dreadnought/algemeen_plan_100dpi.jpg",
+    "local_path": "dreadnought/algemeen_plan_100dpi.jpg",
     "url": "http://www.dreadnoughtproject.org/plans/KM_Kanonneerboot_K1-3_1938/algemeen_plan_100dpi.jpg",
     "source": "Dreadnought Project",
     "title": "Dreadnought Project: algemeen_plan_100dpi.jpg",
@@ -4463,7 +4463,7 @@ const images = [
   },
   {
     "id": "tdp_k3_generalplan_100dpi",
-    "local_path": "img/dreadnought/k3_generalplan_100dpi.jpg",
+    "local_path": "dreadnought/k3_generalplan_100dpi.jpg",
     "url": "http://www.dreadnoughtproject.org/plans/KM_Kanonneerboot_K1-3_1938/k3_generalplan_100dpi.jpg",
     "source": "Dreadnought Project",
     "title": "Dreadnought Project: k3_generalplan_100dpi.jpg",
@@ -4519,7 +4519,7 @@ const images = [
   },
   {
     "id": "tdp_langsschnitt_obere_ansicht_aufbauten_aufbaudeck_oberdeck_100dpi",
-    "local_path": "img/dreadnought/langsschnitt_obere_ansicht_aufbauten_aufbaudeck_oberdeck_100dpi.jpg",
+    "local_path": "dreadnought/langsschnitt_obere_ansicht_aufbauten_aufbaudeck_oberdeck_100dpi.jpg",
     "url": "http://www.dreadnoughtproject.org/plans/KM_Kreuzer_M_1938/langsschnitt_obere_ansicht_aufbauten_aufbaudeck_oberdeck_100dpi.jpg",
     "source": "Dreadnought Project",
     "title": "Dreadnought Project: langsschnitt_obere_ansicht_aufbauten_aufbaudeck_oberdeck_100dpi.jpg",
@@ -4575,7 +4575,7 @@ const images = [
   },
   {
     "id": "tdp_zwischendeck_panzerdeck_plattformdeck_stauung_100dpi",
-    "local_path": "img/dreadnought/zwischendeck_panzerdeck_plattformdeck_stauung_100dpi.jpg",
+    "local_path": "dreadnought/zwischendeck_panzerdeck_plattformdeck_stauung_100dpi.jpg",
     "url": "http://www.dreadnoughtproject.org/plans/KM_Kreuzer_M_1938/zwischendeck_panzerdeck_plattformdeck_stauung_100dpi.jpg",
     "source": "Dreadnought Project",
     "title": "Dreadnought Project: zwischendeck_panzerdeck_plattformdeck_stauung_100dpi.jpg",
@@ -4631,7 +4631,7 @@ const images = [
   },
   {
     "id": "tdp_obere_ansicht_100dpi",
-    "local_path": "img/dreadnought/obere_ansicht_100dpi.jpg",
+    "local_path": "dreadnought/obere_ansicht_100dpi.jpg",
     "url": "http://www.dreadnoughtproject.org/plans/SM_Kaiser_Barbarossa_1901/obere_ansicht_100dpi.jpg",
     "source": "Dreadnought Project",
     "title": "Dreadnought Project: obere_ansicht_100dpi.jpg",
@@ -4687,7 +4687,7 @@ const images = [
   },
   {
     "id": "tdp_stern_detail_100dpi",
-    "local_path": "img/dreadnought/stern_detail_100dpi.jpg",
+    "local_path": "dreadnought/stern_detail_100dpi.jpg",
     "url": "http://www.dreadnoughtproject.org/plans/KM_Lech_und_Isar_1938/stern_detail_100dpi.jpg",
     "source": "Dreadnought Project",
     "title": "Dreadnought Project: stern_detail_100dpi.jpg",
@@ -4743,7 +4743,7 @@ const images = [
   },
   {
     "id": "tdp_decksplane_100dpi",
-    "local_path": "img/dreadnought/decksplane_100dpi.jpg",
+    "local_path": "dreadnought/decksplane_100dpi.jpg",
     "url": "http://www.dreadnoughtproject.org/plans/KM_M102_1942/decksplane_100dpi.jpg",
     "source": "Dreadnought Project",
     "title": "Dreadnought Project: decksplane_100dpi.jpg",
@@ -4799,7 +4799,7 @@ const images = [
   },
   {
     "id": "tdp_langsschnitt_oberer_ansicht_100dpi",
-    "local_path": "img/dreadnought/langsschnitt_oberer_ansicht_100dpi.jpg",
+    "local_path": "dreadnought/langsschnitt_oberer_ansicht_100dpi.jpg",
     "url": "http://www.dreadnoughtproject.org/plans/KM_M102_1942/langsschnitt_oberer_ansicht_100dpi.jpg",
     "source": "Dreadnought Project",
     "title": "Dreadnought Project: langsschnitt_oberer_ansicht_100dpi.jpg",
@@ -4855,7 +4855,7 @@ const images = [
   },
   {
     "id": "tdp_querschnitte_100dpi",
-    "local_path": "img/dreadnought/querschnitte_100dpi.jpg",
+    "local_path": "dreadnought/querschnitte_100dpi.jpg",
     "url": "http://www.dreadnoughtproject.org/plans/KM_Wolf_1928/querschnitte_100dpi.jpg",
     "source": "Dreadnought Project",
     "title": "Dreadnought Project: querschnitte_100dpi.jpg",
@@ -4911,7 +4911,7 @@ const images = [
   },
   {
     "id": "tdp_takelriss_100dpi",
-    "local_path": "img/dreadnought/takelriss_100dpi.jpg",
+    "local_path": "dreadnought/takelriss_100dpi.jpg",
     "url": "http://www.dreadnoughtproject.org/plans/SM_Gazelle_1900/takelriss_100dpi.jpg",
     "source": "Dreadnought Project",
     "title": "Dreadnought Project: takelriss_100dpi.jpg",
@@ -4967,7 +4967,7 @@ const images = [
   },
   {
     "id": "tdp_M1-2_zwischendeck_stauungsplan_100dpi",
-    "local_path": "img/dreadnought/M1-2_zwischendeck_stauungsplan_100dpi.jpg",
+    "local_path": "dreadnought/M1-2_zwischendeck_stauungsplan_100dpi.jpg",
     "url": "http://www.dreadnoughtproject.org/plans/KM_Minensuchboot_35_1937/M1-2_zwischendeck_stauungsplan_100dpi.jpg",
     "source": "Dreadnought Project",
     "title": "Dreadnought Project: M1-2_zwischendeck_stauungsplan_100dpi.jpg",
@@ -5023,7 +5023,7 @@ const images = [
   },
   {
     "id": "tdp_M3-12_zwischendeck_stauungsplan_100dpi",
-    "local_path": "img/dreadnought/M3-12_zwischendeck_stauungsplan_100dpi.jpg",
+    "local_path": "dreadnought/M3-12_zwischendeck_stauungsplan_100dpi.jpg",
     "url": "http://www.dreadnoughtproject.org/plans/KM_Minensuchboot_35_1937/M3-12_zwischendeck_stauungsplan_100dpi.jpg",
     "source": "Dreadnought Project",
     "title": "Dreadnought Project: M3-12_zwischendeck_stauungsplan_100dpi.jpg",
@@ -5079,7 +5079,7 @@ const images = [
   },
   {
     "id": "tdp_fluchtlinienplan_mimeograph_mods_100dpi",
-    "local_path": "img/dreadnought/fluchtlinienplan_mimeograph_mods_100dpi.jpg",
+    "local_path": "dreadnought/fluchtlinienplan_mimeograph_mods_100dpi.jpg",
     "url": "http://www.dreadnoughtproject.org/plans/KM_Minensuchboot_35_1937/fluchtlinienplan_mimeograph_mods_100dpi.jpg",
     "source": "Dreadnought Project",
     "title": "Dreadnought Project: fluchtlinienplan_mimeograph_mods_100dpi.jpg",
@@ -5135,7 +5135,7 @@ const images = [
   },
   {
     "id": "tdp_fluchtlinienplan_original_100dpi",
-    "local_path": "img/dreadnought/fluchtlinienplan_original_100dpi.jpg",
+    "local_path": "dreadnought/fluchtlinienplan_original_100dpi.jpg",
     "url": "http://www.dreadnoughtproject.org/plans/KM_Minensuchboot_35_1937/fluchtlinienplan_original_100dpi.jpg",
     "source": "Dreadnought Project",
     "title": "Dreadnought Project: fluchtlinienplan_original_100dpi.jpg",
@@ -5191,7 +5191,7 @@ const images = [
   },
   {
     "id": "tdp_zwischendeck_stauungsplan_lichtpause3_100dpi",
-    "local_path": "img/dreadnought/zwischendeck_stauungsplan_lichtpause3_100dpi.jpg",
+    "local_path": "dreadnought/zwischendeck_stauungsplan_lichtpause3_100dpi.jpg",
     "url": "http://www.dreadnoughtproject.org/plans/KM_Minensuchboot_35_1937/zwischendeck_stauungsplan_lichtpause3_100dpi.jpg",
     "source": "Dreadnought Project",
     "title": "Dreadnought Project: zwischendeck_stauungsplan_lichtpause3_100dpi.jpg",
@@ -5247,7 +5247,7 @@ const images = [
   },
   {
     "id": "tdp_langsschnitt_obere_ansicht_100dpi",
-    "local_path": "img/dreadnought/langsschnitt_obere_ansicht_100dpi.jpg",
+    "local_path": "dreadnought/langsschnitt_obere_ansicht_100dpi.jpg",
     "url": "http://www.dreadnoughtproject.org/plans/KM_Minensuchboot_43_1944/langsschnitt_obere_ansicht_100dpi.jpg",
     "source": "Dreadnought Project",
     "title": "Dreadnought Project: langsschnitt_obere_ansicht_100dpi.jpg",
@@ -5303,7 +5303,7 @@ const images = [
   },
   {
     "id": "tdp_langsschnitt_100dpi",
-    "local_path": "img/dreadnought/langsschnitt_100dpi.jpg",
+    "local_path": "dreadnought/langsschnitt_100dpi.jpg",
     "url": "http://www.dreadnoughtproject.org/plans/SM_Hagen_1894/langsschnitt_100dpi.jpg",
     "source": "Dreadnought Project",
     "title": "Dreadnought Project: langsschnitt_100dpi.jpg",
@@ -5359,7 +5359,7 @@ const images = [
   },
   {
     "id": "tdp_obere_decks_100dpi",
-    "local_path": "img/dreadnought/obere_decks_100dpi.jpg",
+    "local_path": "dreadnought/obere_decks_100dpi.jpg",
     "url": "http://www.dreadnoughtproject.org/plans/KM_Pinguin_1939/obere_decks_100dpi.jpg",
     "source": "Dreadnought Project",
     "title": "Dreadnought Project: obere_decks_100dpi.jpg",
@@ -5415,7 +5415,7 @@ const images = [
   },
   {
     "id": "tdp_untere_decks_100dpi",
-    "local_path": "img/dreadnought/untere_decks_100dpi.jpg",
+    "local_path": "dreadnought/untere_decks_100dpi.jpg",
     "url": "http://www.dreadnoughtproject.org/plans/KM_Pinguin_1939/untere_decks_100dpi.jpg",
     "source": "Dreadnought Project",
     "title": "Dreadnought Project: untere_decks_100dpi.jpg",
@@ -5471,7 +5471,7 @@ const images = [
   },
   {
     "id": "tdp_oberdeck_batteriedeck_100dpi",
-    "local_path": "img/dreadnought/oberdeck_batteriedeck_100dpi.jpg",
+    "local_path": "dreadnought/oberdeck_batteriedeck_100dpi.jpg",
     "url": "http://www.dreadnoughtproject.org/plans/KM_Prinz_Eugen_1940/oberdeck_batteriedeck_100dpi.jpg",
     "source": "Dreadnought Project",
     "title": "Dreadnought Project: oberdeck_batteriedeck_100dpi.jpg",
@@ -5527,7 +5527,7 @@ const images = [
   },
   {
     "id": "tdp_obere_ansicht_deckshauser_brucken_sowie_aufbaudecks_100dpi",
-    "local_path": "img/dreadnought/obere_ansicht_deckshauser_brucken_sowie_aufbaudecks_100dpi.jpg",
+    "local_path": "dreadnought/obere_ansicht_deckshauser_brucken_sowie_aufbaudecks_100dpi.jpg",
     "url": "http://www.dreadnoughtproject.org/plans/KM_Prinz_Eugen_1940/obere_ansicht_deckshauser_brucken_sowie_aufbaudecks_100dpi.jpg",
     "source": "Dreadnought Project",
     "title": "Dreadnought Project: obere_ansicht_deckshauser_brucken_sowie_aufbaudecks_100dpi.jpg",
@@ -5583,7 +5583,7 @@ const images = [
   },
   {
     "id": "tdp_gesamt_ansicht_100dpi",
-    "local_path": "img/dreadnought/gesamt_ansicht_100dpi.jpg",
+    "local_path": "dreadnought/gesamt_ansicht_100dpi.jpg",
     "url": "http://www.dreadnoughtproject.org/plans/KM_RA6-8_1943/gesamt_ansicht_100dpi.jpg",
     "source": "Dreadnought Project",
     "title": "Dreadnought Project: gesamt_ansicht_100dpi.jpg",
@@ -5639,7 +5639,7 @@ const images = [
   },
   {
     "id": "tdp_generalansicht_100dpi",
-    "local_path": "img/dreadnought/generalansicht_100dpi.jpg",
+    "local_path": "dreadnought/generalansicht_100dpi.jpg",
     "url": "http://www.dreadnoughtproject.org/plans/KM_Schnellboot-Begleitschiff_1938/generalansicht_100dpi.jpg",
     "source": "Dreadnought Project",
     "title": "Dreadnought Project: generalansicht_100dpi.jpg",
@@ -5695,7 +5695,7 @@ const images = [
   },
   {
     "id": "tdp_plan_100dpi",
-    "local_path": "img/dreadnought/plan_100dpi.jpg",
+    "local_path": "dreadnought/plan_100dpi.jpg",
     "url": "http://www.dreadnoughtproject.org/plans/KM_Torpedofangboote_1944/plan_100dpi.jpg",
     "source": "Dreadnought Project",
     "title": "Dreadnought Project: plan_100dpi.jpg",
@@ -5751,7 +5751,7 @@ const images = [
   },
   {
     "id": "tdp_bergungsplan_100dpi",
-    "local_path": "img/dreadnought/bergungsplan_100dpi.jpg",
+    "local_path": "dreadnought/bergungsplan_100dpi.jpg",
     "url": "http://www.dreadnoughtproject.org/plans/KM_Uboot_Type_II_1934/bergungsplan_100dpi.jpg",
     "source": "Dreadnought Project",
     "title": "Dreadnought Project: bergungsplan_100dpi.jpg",
@@ -5807,7 +5807,7 @@ const images = [
   },
   {
     "id": "tdp_dockzeichnung_100dpi",
-    "local_path": "img/dreadnought/dockzeichnung_100dpi.jpg",
+    "local_path": "dreadnought/dockzeichnung_100dpi.jpg",
     "url": "http://www.dreadnoughtproject.org/plans/KM_Uboot_Type_II_1934/dockzeichnung_100dpi.jpg",
     "source": "Dreadnought Project",
     "title": "Dreadnought Project: dockzeichnung_100dpi.jpg",
@@ -5863,7 +5863,7 @@ const images = [
   },
   {
     "id": "tdp_obere_ansicht_oberdeck_zwischendeck_stauung_100dpi",
-    "local_path": "img/dreadnought/obere_ansicht_oberdeck_zwischendeck_stauung_100dpi.jpg",
+    "local_path": "dreadnought/obere_ansicht_oberdeck_zwischendeck_stauung_100dpi.jpg",
     "url": "http://www.dreadnoughtproject.org/plans/KM_Wolf_1928/obere_ansicht_oberdeck_zwischendeck_stauung_100dpi.jpg",
     "source": "Dreadnought Project",
     "title": "Dreadnought Project: obere_ansicht_oberdeck_zwischendeck_stauung_100dpi.jpg",
@@ -5919,7 +5919,7 @@ const images = [
   },
   {
     "id": "tdp_hintere_querschnitte_100dpi",
-    "local_path": "img/dreadnought/hintere_querschnitte_100dpi.jpg",
+    "local_path": "dreadnought/hintere_querschnitte_100dpi.jpg",
     "url": "http://www.dreadnoughtproject.org/plans/SM_Hagen_1894/hintere_querschnitte_100dpi.jpg",
     "source": "Dreadnought Project",
     "title": "Dreadnought Project: hintere_querschnitte_100dpi.jpg",
@@ -5975,7 +5975,7 @@ const images = [
   },
   {
     "id": "tdp_obere_ansicht_backdeck_brucke_100dpi",
-    "local_path": "img/dreadnought/obere_ansicht_backdeck_brucke_100dpi.jpg",
+    "local_path": "dreadnought/obere_ansicht_backdeck_brucke_100dpi.jpg",
     "url": "http://www.dreadnoughtproject.org/plans/SM_Albatross_1908/obere_ansicht_backdeck_brucke_100dpi.jpg",
     "source": "Dreadnought Project",
     "title": "Dreadnought Project: obere_ansicht_backdeck_brucke_100dpi.jpg",
@@ -6031,7 +6031,7 @@ const images = [
   },
   {
     "id": "tdp_vordere_querschnitte_100dpi",
-    "local_path": "img/dreadnought/vordere_querschnitte_100dpi.jpg",
+    "local_path": "dreadnought/vordere_querschnitte_100dpi.jpg",
     "url": "http://www.dreadnoughtproject.org/plans/SM_Kaiser_Barbarossa_1901/vordere_querschnitte_100dpi.jpg",
     "source": "Dreadnought Project",
     "title": "Dreadnought Project: vordere_querschnitte_100dpi.jpg",
@@ -6087,7 +6087,7 @@ const images = [
   },
   {
     "id": "tdp_batteriedeck_100dpi",
-    "local_path": "img/dreadnought/batteriedeck_100dpi.jpg",
+    "local_path": "dreadnought/batteriedeck_100dpi.jpg",
     "url": "http://www.dreadnoughtproject.org/plans/SM_Kaiser_Barbarossa_1901/batteriedeck_100dpi.jpg",
     "source": "Dreadnought Project",
     "title": "Dreadnought Project: batteriedeck_100dpi.jpg",
@@ -6143,7 +6143,7 @@ const images = [
   },
   {
     "id": "tdp_mittlere_querschnitte_100dpi",
-    "local_path": "img/dreadnought/mittlere_querschnitte_100dpi.jpg",
+    "local_path": "dreadnought/mittlere_querschnitte_100dpi.jpg",
     "url": "http://www.dreadnoughtproject.org/plans/SM_Friedrich_der_Grosse_1912/mittlere_querschnitte_100dpi.jpg",
     "source": "Dreadnought Project",
     "title": "Dreadnought Project: mittlere_querschnitte_100dpi.jpg",
@@ -6199,7 +6199,7 @@ const images = [
   },
   {
     "id": "tdp_oberdeck_100dpi",
-    "local_path": "img/dreadnought/oberdeck_100dpi.jpg",
+    "local_path": "dreadnought/oberdeck_100dpi.jpg",
     "url": "http://www.dreadnoughtproject.org/plans/SM_Kaiser_Barbarossa_1901/oberdeck_100dpi.jpg",
     "source": "Dreadnought Project",
     "title": "Dreadnought Project: oberdeck_100dpi.jpg",
@@ -6255,7 +6255,7 @@ const images = [
   },
   {
     "id": "tdp_zwischendeck_100dpi",
-    "local_path": "img/dreadnought/zwischendeck_100dpi.jpg",
+    "local_path": "dreadnought/zwischendeck_100dpi.jpg",
     "url": "http://www.dreadnoughtproject.org/plans/SM_Kaiser_Barbarossa_1901/zwischendeck_100dpi.jpg",
     "source": "Dreadnought Project",
     "title": "Dreadnought Project: zwischendeck_100dpi.jpg",
@@ -6311,7 +6311,7 @@ const images = [
   },
   {
     "id": "tdp_bruckendeck_100dpi",
-    "local_path": "img/dreadnought/bruckendeck_100dpi.jpg",
+    "local_path": "dreadnought/bruckendeck_100dpi.jpg",
     "url": "http://www.dreadnoughtproject.org/plans/SM_Gurtelpanzer-Kreuzer/bruckendeck_100dpi.jpg",
     "source": "Dreadnought Project",
     "title": "Dreadnought Project: bruckendeck_100dpi.jpg",
@@ -6367,7 +6367,7 @@ const images = [
   },
   {
     "id": "tdp_langenansicht_100dpi",
-    "local_path": "img/dreadnought/langenansicht_100dpi.jpg",
+    "local_path": "dreadnought/langenansicht_100dpi.jpg",
     "url": "http://www.dreadnoughtproject.org/plans/SM_Gurtelpanzer-Kreuzer/langenansicht_100dpi.jpg",
     "source": "Dreadnought Project",
     "title": "Dreadnought Project: langenansicht_100dpi.jpg",
@@ -6423,7 +6423,7 @@ const images = [
   },
   {
     "id": "tdp_aufbaudeck_100dpi",
-    "local_path": "img/dreadnought/aufbaudeck_100dpi.jpg",
+    "local_path": "dreadnought/aufbaudeck_100dpi.jpg",
     "url": "http://www.dreadnoughtproject.org/plans/SM_Kaiser_Barbarossa_1901/aufbaudeck_100dpi.jpg",
     "source": "Dreadnought Project",
     "title": "Dreadnought Project: aufbaudeck_100dpi.jpg",
@@ -6479,7 +6479,7 @@ const images = [
   },
   {
     "id": "tdp_obere_ansicht_brucken_100dpi",
-    "local_path": "img/dreadnought/obere_ansicht_brucken_100dpi.jpg",
+    "local_path": "dreadnought/obere_ansicht_brucken_100dpi.jpg",
     "url": "http://www.dreadnoughtproject.org/plans/SM_Hagen_1894/obere_ansicht_brucken_100dpi.jpg",
     "source": "Dreadnought Project",
     "title": "Dreadnought Project: obere_ansicht_brucken_100dpi.jpg",
@@ -6535,7 +6535,7 @@ const images = [
   },
   {
     "id": "tdp_panzerdeck_100dpi",
-    "local_path": "img/dreadnought/panzerdeck_100dpi.jpg",
+    "local_path": "dreadnought/panzerdeck_100dpi.jpg",
     "url": "http://www.dreadnoughtproject.org/plans/SM_Kaiser_Barbarossa_1901/panzerdeck_100dpi.jpg",
     "source": "Dreadnought Project",
     "title": "Dreadnought Project: panzerdeck_100dpi.jpg",
@@ -6591,7 +6591,7 @@ const images = [
   },
   {
     "id": "tdp_platformdeck_100dpi",
-    "local_path": "img/dreadnought/platformdeck_100dpi.jpg",
+    "local_path": "dreadnought/platformdeck_100dpi.jpg",
     "url": "http://www.dreadnoughtproject.org/plans/SM_Hagen_1894/platformdeck_100dpi.jpg",
     "source": "Dreadnought Project",
     "title": "Dreadnought Project: platformdeck_100dpi.jpg",
@@ -6647,7 +6647,7 @@ const images = [
   },
   {
     "id": "tdp_belegungsplan_batteriedeck_100dpi",
-    "local_path": "img/dreadnought/belegungsplan_batteriedeck_100dpi.jpg",
+    "local_path": "dreadnought/belegungsplan_batteriedeck_100dpi.jpg",
     "url": "http://www.dreadnoughtproject.org/plans/SM_Hannover_1907/belegungsplan_batteriedeck_100dpi.jpg",
     "source": "Dreadnought Project",
     "title": "Dreadnought Project: belegungsplan_batteriedeck_100dpi.jpg",
@@ -6703,7 +6703,7 @@ const images = [
   },
   {
     "id": "tdp_luftungsplan_aufbaudeck_oberdeck_brucke_100dpi",
-    "local_path": "img/dreadnought/luftungsplan_aufbaudeck_oberdeck_brucke_100dpi.jpg",
+    "local_path": "dreadnought/luftungsplan_aufbaudeck_oberdeck_brucke_100dpi.jpg",
     "url": "http://www.dreadnoughtproject.org/plans/SM_Hannover_1907/luftungsplan_aufbaudeck_oberdeck_brucke_100dpi.jpg",
     "source": "Dreadnought Project",
     "title": "Dreadnought Project: luftungsplan_aufbaudeck_oberdeck_brucke_100dpi.jpg",
@@ -6759,7 +6759,7 @@ const images = [
   },
   {
     "id": "tdp_luftungsplan_langsschnitt_100dpi",
-    "local_path": "img/dreadnought/luftungsplan_langsschnitt_100dpi.jpg",
+    "local_path": "dreadnought/luftungsplan_langsschnitt_100dpi.jpg",
     "url": "http://www.dreadnoughtproject.org/plans/SM_Hannover_1907/luftungsplan_langsschnitt_100dpi.jpg",
     "source": "Dreadnought Project",
     "title": "Dreadnought Project: luftungsplan_langsschnitt_100dpi.jpg",
@@ -6815,7 +6815,7 @@ const images = [
   },
   {
     "id": "tdp_pumpenplan_querschnitte_100dpi",
-    "local_path": "img/dreadnought/pumpenplan_querschnitte_100dpi.jpg",
+    "local_path": "dreadnought/pumpenplan_querschnitte_100dpi.jpg",
     "url": "http://www.dreadnoughtproject.org/plans/SM_Hannover_1907/pumpenplan_querschnitte_100dpi.jpg",
     "source": "Dreadnought Project",
     "title": "Dreadnought Project: pumpenplan_querschnitte_100dpi.jpg",
@@ -6871,7 +6871,7 @@ const images = [
   },
   {
     "id": "tdp_bestreichungswinkel_der_geschutze_100dpi",
-    "local_path": "img/dreadnought/bestreichungswinkel_der_geschutze_100dpi.jpg",
+    "local_path": "dreadnought/bestreichungswinkel_der_geschutze_100dpi.jpg",
     "url": "http://www.dreadnoughtproject.org/plans/SM_Hindenburg_1917/bestreichungswinkel_der_geschutze_100dpi.jpg",
     "source": "Dreadnought Project",
     "title": "Dreadnought Project: bestreichungswinkel_der_geschutze_100dpi.jpg",
@@ -6927,7 +6927,7 @@ const images = [
   },
   {
     "id": "tdp_seitenrichtung_der_gefenerten_schusse_100dpi",
-    "local_path": "img/dreadnought/seitenrichtung_der_gefenerten_schusse_100dpi.jpg",
+    "local_path": "dreadnought/seitenrichtung_der_gefenerten_schusse_100dpi.jpg",
     "url": "http://www.dreadnoughtproject.org/plans/SM_Hindenburg_1917/seitenrichtung_der_gefenerten_schusse_100dpi.jpg",
     "source": "Dreadnought Project",
     "title": "Dreadnought Project: seitenrichtung_der_gefenerten_schusse_100dpi.jpg",
@@ -6983,7 +6983,7 @@ const images = [
   },
   {
     "id": "tdp_luftungseinrichtung_100dpi",
-    "local_path": "img/dreadnought/luftungseinrichtung_100dpi.jpg",
+    "local_path": "dreadnought/luftungseinrichtung_100dpi.jpg",
     "url": "http://www.dreadnoughtproject.org/plans/SM_Kaiser_1912/luftungseinrichtung_100dpi.jpg",
     "source": "Dreadnought Project",
     "title": "Dreadnought Project: luftungseinrichtung_100dpi.jpg",
@@ -7039,7 +7039,7 @@ const images = [
   },
   {
     "id": "tdp_luftungseinrichtung_ventilation_100dpi",
-    "local_path": "img/dreadnought/luftungseinrichtung_ventilation_100dpi.jpg",
+    "local_path": "dreadnought/luftungseinrichtung_ventilation_100dpi.jpg",
     "url": "http://www.dreadnoughtproject.org/plans/SM_Kaiser_1912/luftungseinrichtung_ventilation_100dpi.jpg",
     "source": "Dreadnought Project",
     "title": "Dreadnought Project: luftungseinrichtung_ventilation_100dpi.jpg",
@@ -7095,7 +7095,7 @@ const images = [
   },
   {
     "id": "tdp_stauungsplan_100dpi",
-    "local_path": "img/dreadnought/stauungsplan_100dpi.jpg",
+    "local_path": "dreadnought/stauungsplan_100dpi.jpg",
     "url": "http://www.dreadnoughtproject.org/plans/SM_Kaiser_Barbarossa_1901/stauungsplan_100dpi.jpg",
     "source": "Dreadnought Project",
     "title": "Dreadnought Project: stauungsplan_100dpi.jpg",

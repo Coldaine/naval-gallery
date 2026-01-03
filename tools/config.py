@@ -30,8 +30,8 @@ GOOGLE_DRIVE_PATTERNS = [
     ".google-drive",         # Hidden mount
 ]
 
-# Subfolder within Google Drive for Naval Gallery images
-NAVAL_GALLERY_SUBFOLDER = "NavalGallery"
+# Subfolder within Google Drive or project root for Naval Gallery images
+NAVAL_GALLERY_SUBFOLDER = "img"
 
 
 def _find_google_drive() -> Optional[Path]:
@@ -79,27 +79,20 @@ def get_image_dir() -> Path:
     
     Priority:
     1. NAVAL_GALLERY_IMAGE_DIR env var (explicit override)
-    2. Auto-detected Google Drive + NavalGallery subfolder
-    3. Error with instructions
+    2. Auto-detected Google Drive
     
-    Raises:
-        SystemExit: If no valid storage directory can be found.
+    In both cases, we append NAVAL_GALLERY_SUBFOLDER to the base path.
     """
     # Priority 1: Explicit environment variable
-    image_dir = os.environ.get("NAVAL_GALLERY_IMAGE_DIR")
+    image_dir_env = os.environ.get("NAVAL_GALLERY_IMAGE_DIR")
     
-    if image_dir:
-        path = Path(image_dir)
-        if not path.exists():
-            print("\n" + "=" * 70)
-            print("ERROR: NAVAL_GALLERY_IMAGE_DIR does not exist!")
-            print("=" * 70)
-            print()
-            print(f"Path: {path}")
-            print()
-            print("Please create this directory or update the environment variable.")
-            print("=" * 70 + "\n")
+    if image_dir_env:
+        base_path = Path(image_dir_env)
+        if not base_path.exists():
+            print(f"\nERROR: NAVAL_GALLERY_IMAGE_DIR base path does not exist: {base_path}\n")
             sys.exit(1)
+        path = base_path / NAVAL_GALLERY_SUBFOLDER
+        path.mkdir(parents=True, exist_ok=True)
         return path
     
     # Priority 2: Auto-detect Google Drive
@@ -177,12 +170,7 @@ TOOLS_DIR = PROJECT_ROOT / "tools"
 def validate_config():
     """Run validation - call this at script start to fail fast."""
     img_dir = get_image_dir()
-    
-    # Check if it was auto-detected or explicit
-    if os.environ.get("NAVAL_GALLERY_IMAGE_DIR"):
-        print(f"[*] Image storage (env): {img_dir}")
-    else:
-        print(f"[*] Image storage (auto-detected): {img_dir}")
+    print(f"[*] Resolved image storage: {img_dir}")
 
 
 if __name__ == "__main__":
