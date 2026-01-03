@@ -153,6 +153,14 @@ def get_relative_path(source_name: str, filename: str) -> str:
     return f"{source_name}/{filename}"
 
 
+def get_absolute_path(relative_path: str) -> Path:
+    """
+    Resolve a relative path (from manifest) to an absolute path in image storage.
+    """
+    return get_image_dir() / relative_path
+
+
+
 # ============================================================================
 # PROJECT PATHS (relative to git repo)
 # ============================================================================

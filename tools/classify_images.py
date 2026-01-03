@@ -16,7 +16,7 @@ from pathlib import Path
 
 # Add parent to path for config import
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from config import get_image_dir, validate_config
+from config import get_absolute_path, validate_config
 from vision import MCPVisionClient
 import db
 
@@ -144,10 +144,7 @@ class Classifier:
         logger.info("[!] Stopping classification...")
         self.running = False
 
-    def _resolve_image_path(self, local_path: str) -> Path:
-        """Resolve local_path (relative to image storage) to absolute path."""
-        img_dir = get_image_dir()
-        return img_dir / local_path
+
 
     async def run(self, limit=None, retry_failed=False):
         # Validate config first
@@ -178,7 +175,7 @@ class Classifier:
                 local_path = item['local_path']
                 
                 # Resolve to absolute path
-                img_path = self._resolve_image_path(local_path)
+                img_path = get_absolute_path(local_path)
                 
                 # Check if file exists
                 if not img_path.exists():
