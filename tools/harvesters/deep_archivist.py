@@ -2,15 +2,22 @@ from internetarchive import search_items
 import requests
 import json
 import os
+import sys
 import xml.etree.ElementTree as ET
+
+# Add parent to path for config import
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from config import get_staging_dir, get_relative_path, validate_config, DATA_DIR
 
 # Deep Archivist
 # Enhanced version of the pilot script
 
-STAGING_DIR = "img/ia"
-os.makedirs(STAGING_DIR, exist_ok=True)
-
 def run():
+    # Validate config before doing anything
+    validate_config()
+    
+    STAGING_DIR = get_staging_dir("ia")
+    
     # Broader search for technical drawings, excluding common low-yield DTIC reports
     query = '(subject:"naval architecture" OR subject:"ship plans" OR subject:"technical drawings") AND mediatype:texts AND NOT collection:dtic'
     print(f"[*] Deep Archivist searching: {query}")
@@ -63,8 +70,9 @@ def run():
 
             # Download top 5 from each valid volume
             for c in volume_candidates[:5]:
-                path = os.path.join(STAGING_DIR, f"{c['id']}.jpg")
-                if not os.path.exists(path):
+                filename = f"{c['id']}.jpg"
+                path = STAGING_DIR / filename
+                if not path.exists():
                     print(f"    [+] Downloading {c['id']} ({c['url']})")
                     img_r = requests.get(c['url'], timeout=15)
                     if img_r.status_code == 200:
@@ -73,7 +81,7 @@ def run():
                     else:
                         print(f"    [!] Download failed: {img_r.status_code}")
                         continue
-                c['local_path'] = f"img/ia/{c['id']}.jpg"
+                c['local_path'] = get_relative_path("ia", filename)
                 manifest.append(c)
                 
             count += 1
@@ -81,7 +89,7 @@ def run():
         except Exception as e:
             print(f"    [!] Error processing {iid}: {e}")
             
-    with open("data/ia_manifest.json", "w") as f:
+    with open(DATA_DIR / "ia_manifest.json", "w") as f:
         json.dump(manifest, f, indent=2)
 
 if __name__ == "__main__":

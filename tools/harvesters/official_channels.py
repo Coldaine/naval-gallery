@@ -1,14 +1,21 @@
 import requests
 import json
 import os
+import sys
+
+# Add parent to path for config import
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from config import get_staging_dir, get_relative_path, validate_config, DATA_DIR
 
 # Official Channels
 # Library of Congress API
 
-STAGING_DIR = "img/loc"
-os.makedirs(STAGING_DIR, exist_ok=True)
-
 def run():
+    # Validate config before doing anything
+    validate_config()
+    
+    STAGING_DIR = get_staging_dir("loc")
+    
     print("[*] Contacting Library of Congress...")
     
     # LoC search for "monitor drawings" or similar to get old ships
@@ -52,9 +59,9 @@ def run():
                     pk = item_url.strip('/').split('/')[-1] if item_url else 'unknown'
                 
                 filename = f"loc_{pk}.jpg"
-                path = os.path.join(STAGING_DIR, filename)
+                path = STAGING_DIR / filename
                 
-                if not os.path.exists(path):
+                if not path.exists():
                     print(f"    [+] Downloading {title[:30]}...")
                     ir = requests.get(best_url, timeout=15)
                     with open(path, 'wb') as f:
@@ -64,14 +71,14 @@ def run():
                     "id": f"loc_{pk}",
                     "title": title,
                     "url": best_url,
-                    "local_path": f"img/loc/{filename}",
+                    "local_path": get_relative_path("loc", filename),
                     "source": "Library of Congress",
                     "type": "profile"
                 })
             except Exception as e:
                 print(f"    [!] Item error: {e}")
                 
-        with open("data/loc_manifest.json", "w") as f:
+        with open(DATA_DIR / "loc_manifest.json", "w") as f:
             json.dump(manifest, f, indent=2)
             
     except Exception as e:

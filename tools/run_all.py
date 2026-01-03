@@ -1,24 +1,35 @@
 import os
+import sys
 import subprocess
 import json
 import glob
+from pathlib import Path
+
+# Add to path for config import
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from config import validate_config, DATA_DIR
 
 def run():
+    # Validate config BEFORE running any harvesters
+    validate_config()
+    
     scripts = [
         "tools/harvesters/wiki_walker.py",
         "tools/harvesters/manual_siphon.py",
         "tools/harvesters/deep_archivist.py",
         "tools/harvesters/official_channels.py",
-        "tools/harvesters/blueprints_crawler.py"
+        "tools/harvesters/blueprints_crawler.py",
+        "tools/harvesters/dreadnought_scraper.py",
+        # Pinterest is optional - requires separate credentials
+        # "tools/harvesters/pinterest_scraper.py"
     ]
     
     print("=== STARTING NAVAL HARVEST ===")
     
-    import sys
     for script in scripts:
         print(f"\n>>> Running {script}...")
         try:
-            subprocess.run([sys.executable, script], check=False) # Use current interpreter
+            subprocess.run([sys.executable, script], check=False)
         except Exception as e:
             print(f"Failed to run {script}: {e}")
             
@@ -29,9 +40,10 @@ def run():
     source_counts = {}
     
     # Load all produced JSONs
-    files = glob.glob("data/*_manifest.json")
+    files = glob.glob(str(DATA_DIR / "*_manifest.json"))
     for fpath in files:
         if "staging" in fpath: continue # Skip old pilot
+        if "master" in fpath: continue  # Don't include the master in itself
         source_name = os.path.basename(fpath).replace("_manifest.json", "")
         try:
             with open(fpath, "r") as f:
@@ -48,7 +60,7 @@ def run():
     all_images = list(all_images_map.values())
     
     # Save master manifest
-    with open("data/master_manifest.json", "w") as f:
+    with open(DATA_DIR / "master_manifest.json", "w") as f:
         json.dump(all_images, f, indent=2)
         
     print("\nSUMMARY:")
@@ -59,8 +71,8 @@ def run():
     print(f"Total Unique Images (Deduplicated): {len(all_images)}")
     print("-" * 30)
     
-    # Update data.js logic
-    with open("data/images.js", "w") as f:
+    # Update data.js for frontend
+    with open(DATA_DIR / "images.js", "w") as f:
         f.write(f"const images = {json.dumps(all_images, indent=2)};")
 
 if __name__ == "__main__":

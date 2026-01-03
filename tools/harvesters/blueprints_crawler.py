@@ -1,16 +1,24 @@
 import requests
 import os
+import sys
 import json
 import re
+
+# Add parent to path for config import
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from config import get_staging_dir, get_relative_path, validate_config, DATA_DIR
 
 # Blueprints Crawler
 # Targets NavSource (respectfully) for specific class pages
 
-STAGING_DIR = "img/blueprints"
-os.makedirs(STAGING_DIR, exist_ok=True)
 USER_AGENT = "NavalPlateHarvester/1.0"
 
 def run():
+    # Validate config before doing anything
+    validate_config()
+    
+    STAGING_DIR = get_staging_dir("blueprints")
+    
     print("[*] Crawling NavSource for Plan Views...")
     
     # Target a specific portal page that lists classes
@@ -52,9 +60,9 @@ def run():
                 img_url = f"http://www.navsource.org/archives/01/{img_rel}"
                 
                 filename = img_rel.split("/")[-1]
-                path = os.path.join(STAGING_DIR, filename)
+                path = STAGING_DIR / filename
                 
-                if not os.path.exists(path):
+                if not path.exists():
                     print(f"    [+] Found Plan: {filename}")
                     ir = requests.get(img_url, headers={'User-Agent': USER_AGENT})
                     with open(path, 'wb') as f:
@@ -64,7 +72,7 @@ def run():
                     "id": filename.split(".")[0],
                     "title": f"NavSource Plan {filename}",
                     "url": img_url,
-                    "local_path": f"img/blueprints/{filename}",
+                    "local_path": get_relative_path("blueprints", filename),
                     "source": "NavSource",
                     "type": "deck" # Guess
                 })
@@ -72,7 +80,7 @@ def run():
     except Exception as e:
         print(f"[!] Error: {e}")
         
-    with open("data/blueprints_manifest.json", "w") as f:
+    with open(DATA_DIR / "blueprints_manifest.json", "w") as f:
         json.dump(manifest, f, indent=2)
 
 if __name__ == "__main__":

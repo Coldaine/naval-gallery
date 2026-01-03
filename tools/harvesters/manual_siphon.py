@@ -1,14 +1,15 @@
 import os
+import sys
 import json
 import requests
 import xml.etree.ElementTree as ET
 
+# Add parent to path for config import
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from config import get_staging_dir, get_relative_path, validate_config, DATA_DIR
+
 # ONI Manual Siphon
 # Targets known WWII ONI Recognition Manuals on Internet Archive
-
-STAGING_DIR = "img/oni"
-os.makedirs(STAGING_DIR, exist_ok=True)
-DATA_DIR = "data"
 
 # Known IDs for ONI manuals or similar recognition books
 ONI_IDS = [
@@ -18,7 +19,7 @@ ONI_IDS = [
     # but these are typical identifiers.
 ]
 
-def get_scandata_and_find_plates(item_id):
+def get_scandata_and_find_plates(item_id, staging_dir):
     # Similar to smart_harvester but more aggressive for ONI manuals
     # In recognition manuals, almost EVERY page is a "plate".
     url = f"https://archive.org/download/{item_id}/{item_id}_scandata.xml"
@@ -57,22 +58,28 @@ def get_scandata_and_find_plates(item_id):
         print(f"[!] Error: {e}")
         return []
 
-def download(item):
-    path = os.path.join(STAGING_DIR, f"{item['id']}.jpg")
-    if os.path.exists(path):
-        item['local_path'] = f"img/oni/{item['id']}.jpg"
+def download(item, staging_dir):
+    filename = f"{item['id']}.jpg"
+    path = staging_dir / filename
+    if path.exists():
+        item['local_path'] = get_relative_path("oni", filename)
         return item
         
     try:
         r = requests.get(item['url'], timeout=15)
         with open(path, 'wb') as f:
             f.write(r.content)
-        item['local_path'] = f"img/oni/{item['id']}.jpg"
+        item['local_path'] = get_relative_path("oni", filename)
         return item
     except:
         return None
 
 def run():
+    # Validate config before doing anything
+    validate_config()
+    
+    STAGING_DIR = get_staging_dir("oni")
+    
     all_manifest = []
     
     # If the specific ONI IDs don't exist, search for them first
@@ -86,13 +93,13 @@ def run():
         if len(ids) >= 3: break
         
     for i in ids:
-        candidates = get_scandata_and_find_plates(i)
+        candidates = get_scandata_and_find_plates(i, STAGING_DIR)
         # Take top 5 from each
         for c in candidates[:5]:
-            res = download(c)
+            res = download(c, STAGING_DIR)
             if res: all_manifest.append(res)
             
-    with open("data/oni_manifest.json", "w") as f:
+    with open(DATA_DIR / "oni_manifest.json", "w") as f:
         json.dump(all_manifest, f, indent=2)
 
 if __name__ == "__main__":

@@ -1,13 +1,16 @@
 import requests
 import os
+import sys
 import json
 import re
+
+# Add parent to path for config import
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from config import get_staging_dir, get_relative_path, validate_config, DATA_DIR
 
 # Wikimedia Commons Harvester
 # Targets "Ship_plans" categories
 
-STAGING_DIR = "img/wiki"
-os.makedirs(STAGING_DIR, exist_ok=True)
 USER_AGENT = "NavalPlateHarvester/1.0 (contact: user@example.com)"
 
 def search_category(category, depth=0, max_depth=1):
@@ -97,13 +100,13 @@ def get_file_info(titles):
             
     return file_data
 
-def download_file(item):
+def download_file(item, staging_dir):
     ext = item['url'].split('.')[-1]
     filename = f"{item['id']}.{ext}"
-    path = os.path.join(STAGING_DIR, filename)
+    path = staging_dir / filename
     
-    if os.path.exists(path):
-        item['local_path'] = f"img/wiki/{filename}"
+    if path.exists():
+        item['local_path'] = get_relative_path("wiki", filename)
         return item
         
     print(f"[+] Downloading: {item['title']}")
@@ -112,13 +115,18 @@ def download_file(item):
         r = requests.get(item['url'], headers=headers, timeout=20)
         with open(path, 'wb') as f:
             f.write(r.content)
-        item['local_path'] = f"img/wiki/{filename}"
+        item['local_path'] = get_relative_path("wiki", filename)
         return item
     except Exception as e:
         print(f"[!] Download failed: {e}")
         return None
 
 def run():
+    # Validate config before doing anything
+    validate_config()
+    
+    STAGING_DIR = get_staging_dir("wiki")
+    
     # Seed categories
     seeds = [
         "Category:Ship_plans",
@@ -139,10 +147,10 @@ def run():
     # Download
     manifest = []
     for item in items:
-        res = download_file(item)
+        res = download_file(item, STAGING_DIR)
         if res: manifest.append(res)
         
-    with open("data/wiki_manifest.json", "w") as f:
+    with open(DATA_DIR / "wiki_manifest.json", "w") as f:
         json.dump(manifest, f, indent=2)
 
 if __name__ == "__main__":
