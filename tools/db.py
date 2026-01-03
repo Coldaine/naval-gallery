@@ -151,58 +151,37 @@ def save_analysis(img_id, results, error=None):
             WHERE id = ?
         """, (now, error, img_id))
     else:
-        cursor.execute("""
-            UPDATE images SET 
-                analysis_status = 'complete',
-                analyzed_at = ?,
-                ship_type = ?,
-                view_type = ?,
-                navy = ?,
-                era = ?,
-                ship_name = ?,
-                ship_class = ?,
-                hull_number = ?,
-                shipyard = ?,
-                displacement = ?,
-                armament = ?,
-                dimensions = ?,
-                propulsion = ?,
-                armor = ?,
-                speed = ?,
-                complement = ?,
-                launch_date = ?,
-                commission_date = ?,
-                reasoning = ?,
-                confidence = ?,
-                raw_response = ?,
-                notes = ?,
-                error_message = NULL
-            WHERE id = ?
-        """, (
-            now,
-            results.get('ship_type'),
-            results.get('view_type'),
-            results.get('navy'),
-            results.get('era'),
-            results.get('ship_name'),
-            results.get('ship_class'),
-            results.get('hull_number'),
-            results.get('shipyard'),
-            results.get('displacement'),
-            results.get('armament'),
-            results.get('dimensions'),
-            results.get('propulsion'),
-            results.get('armor'),
-            results.get('speed'),
-            results.get('complement'),
-            results.get('launch_date'),
-            results.get('commission_date'),
-            results.get('reasoning'),
-            results.get('confidence'),
-            json.dumps(results.get('raw_response')),
-            results.get('notes'),
-            img_id
-        ))
+        # Dynamic update based on provided results (to support Phase 2 enrichment without wiping Phase 1)
+        update_fields = {
+            'analysis_status': 'complete',
+            'analyzed_at': now,
+            'error_message': None
+        }
+        
+        # Map of potentially available fields in results
+        valid_columns = [
+            'ship_type', 'view_type', 'navy', 'era',
+            'ship_name', 'ship_class', 'hull_number', 'shipyard',
+            'displacement', 'armament', 'dimensions',
+            'propulsion', 'armor', 'speed', 'complement',
+            'launch_date', 'commission_date', 'reasoning',
+            'confidence', 'notes'
+        ]
+        
+        for col in valid_columns:
+            if col in results and results[col] is not None:
+                update_fields[col] = results[col]
+                
+        if 'raw_response' in results:
+            update_fields['raw_response'] = json.dumps(results['raw_response'])
+
+        # Construct SQL
+        set_clause = ", ".join([f"{k} = ?" for k in update_fields.keys()])
+        values = list(update_fields.values())
+        values.append(img_id)
+        
+        query = f"UPDATE images SET {set_clause} WHERE id = ?"
+        cursor.execute(query, values)
         
     conn.commit()
     conn.close()
@@ -259,6 +238,35 @@ def export_manifest(output_path):
     with open(output_path, 'w') as f:
         json.dump(data, f, indent=2)
     print(f"[*] Manifest exported to {output_path}")
+
+def get_phase2_pending(limit=None):
+    "Get images ready for Phase 2 enrichment (valid ships, Phase 1 complete)."
+    conn = sqlite3.connect(DB_PATH)
+    conn.row_factory = sqlite3.Row
+    cursor = conn.cursor()
+    
+    # Filter for completed items that are valid ships but missing Phase 2 data
+    query = """
+        SELECT * FROM images 
+        WHERE analysis_status = 'complete' 
+        AND (
+            ship_type NOT LIKE 'N/A%'
+            AND ship_type NOT LIKE 'Not %'
+            AND ship_type != 'Unknown'
+            AND ship_type NOT LIKE 'civil coding%'
+            AND ship_type NOT LIKE 'Indeterminate%'
+        )
+        AND ship_class IS NULL -- Phase 2 field
+    """
+    params = []
+    if limit:
+        query += " LIMIT ?"
+        params.append(limit)
+        
+    cursor.execute(query, params)
+    rows = cursor.fetchall()
+    conn.close()
+    return [dict(row) for row in rows]
 
 if __name__ == "__main__":
     init_db()

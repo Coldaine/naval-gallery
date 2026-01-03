@@ -86,7 +86,11 @@ class Classifier:
 
     async def run(self, limit=None, retry_failed=False):
         # 1. Get pending work
-        pending = db.get_pending(limit=limit)
+        if self.phase == 1:
+            pending = db.get_pending(limit=limit)
+        else:
+            pending = db.get_phase2_pending(limit=limit)
+            
         if not pending:
             logger.info("[*] No pending images found.")
             return
