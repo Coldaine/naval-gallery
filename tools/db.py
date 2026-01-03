@@ -31,36 +31,57 @@ def init_db():
         -- Organization state
         organization_status TEXT DEFAULT 'pending', -- pending | organized | error
         
-        -- Classification results (Phase 1)
-        ship_type TEXT,
-        view_type TEXT,
-        navy TEXT,
-        era TEXT,
+        -- Image structure (BroadsideStudio alignment)
+        image_type TEXT,                -- single_view, multi_view_stacked, multi_view_grid, etc.
         
-        -- Rich extraction (Phase 2)
+        -- View metadata (structural columns - first class properties)
+        view_type TEXT,                 -- side_profile, plan_view, bow_view, stern_view, cross_section, detail
+        view_style TEXT,                -- line_drawing_bw, line_drawing_color, filled_color, shaded, photograph, painting
+        orientation TEXT,               -- bow_left, bow_right, bow_up, bow_down
+        bounds JSON,                    -- { x, y, width, height } if cropped
+        
+        -- Ship identification
+        ship_type TEXT,                 -- battleship, cruiser, destroyer, submarine, carrier, auxiliary
         ship_name TEXT,
         ship_class TEXT,
         hull_number TEXT,
+        navy TEXT,
+        era TEXT,                       -- pre_dreadnought, dreadnought, interwar, wwii, post_war
+        is_historical BOOLEAN,          -- false if hypothetical/fictional
+        designer TEXT,                  -- Artist/designer attribution
+        
+        -- Quality assessment (BroadsideStudio alignment)
+        silhouette_clarity TEXT,        -- clean, moderate, noisy
+        annotation_density TEXT,        -- none, light, heavy  
+        resolution_quality TEXT,        -- high, medium, low
+        extraction_tier INTEGER,        -- 1-5 per DATA-003 (1=digital best, 5=unsuitable)
+        suitable_for_extraction BOOLEAN,
+        quality_issues JSON,            -- ["watermark", "low contrast", etc.]
+        
+        -- Text extraction
+        text_content JSON,              -- [{ text, location: {x,y}, textType, confidence }]
+        
+        -- Technical specs (Phase 2 enrichment)
         shipyard TEXT,
         displacement TEXT,
         armament TEXT,
         dimensions TEXT,
-        
-        -- Enhanced fields (New)
         propulsion TEXT,
         armor TEXT,
         speed TEXT,
         complement TEXT,
         launch_date TEXT,
         commission_date TEXT,
-        reasoning TEXT,
         
-        confidence TEXT,
+        -- Analysis metadata
+        reasoning TEXT,
+        confidence REAL,                -- 0.0 - 1.0 (numeric, not text)
         raw_response TEXT,
         notes TEXT
     )
     """)
     
+    # Basic indexes (columns guaranteed to exist)
     cursor.execute("CREATE INDEX IF NOT EXISTS idx_analysis_status ON images(analysis_status)")
     cursor.execute("CREATE INDEX IF NOT EXISTS idx_ship_type ON images(ship_type)")
     cursor.execute("CREATE INDEX IF NOT EXISTS idx_navy ON images(navy)")
@@ -68,6 +89,57 @@ def init_db():
     conn.commit()
     conn.close()
     print(f"[*] Database initialized at {DB_PATH}")
+    
+    # Run migration to add new columns to existing tables
+    migrate_db()
+
+
+
+def migrate_db():
+    """Add new columns if they don't exist (for existing databases)."""
+    conn = sqlite3.connect(DB_PATH)
+    cursor = conn.cursor()
+    
+    # Get existing columns
+    cursor.execute("PRAGMA table_info(images)")
+    existing_cols = {row[1] for row in cursor.fetchall()}
+    
+    # New columns to add
+    new_columns = [
+        ("image_type", "TEXT"),
+        ("view_style", "TEXT"),
+        ("orientation", "TEXT"),
+        ("bounds", "JSON"),
+        ("is_historical", "BOOLEAN"),
+        ("designer", "TEXT"),
+        ("silhouette_clarity", "TEXT"),
+        ("annotation_density", "TEXT"),
+        ("resolution_quality", "TEXT"),
+        ("extraction_tier", "INTEGER"),
+        ("suitable_for_extraction", "BOOLEAN"),
+        ("quality_issues", "JSON"),
+        ("text_content", "JSON"),
+    ]
+    
+    added = 0
+    for col_name, col_type in new_columns:
+        if col_name not in existing_cols:
+            cursor.execute(f"ALTER TABLE images ADD COLUMN {col_name} {col_type}")
+            added += 1
+    
+    if added > 0:
+        # Create new indexes
+        cursor.execute("CREATE INDEX IF NOT EXISTS idx_view_type ON images(view_type)")
+        cursor.execute("CREATE INDEX IF NOT EXISTS idx_extraction_tier ON images(extraction_tier)")
+        cursor.execute("CREATE INDEX IF NOT EXISTS idx_suitable ON images(suitable_for_extraction)")
+        
+        conn.commit()
+        print(f"[*] Migration complete. Added {added} new columns.")
+    else:
+        print("[*] Database schema already up to date.")
+    
+    conn.close()
+
 
 def import_manifest(manifest_path):
     "Import entries from JSON manifest into database."
@@ -118,6 +190,7 @@ def import_manifest(manifest_path):
     conn.close()
     print(f"[*] Manifest import complete. New: {new_count}, Updated: {update_count}")
 
+
 def get_pending(limit=None):
     "Get images with 'pending' analysis status."
     conn = sqlite3.connect(DB_PATH)
@@ -135,6 +208,7 @@ def get_pending(limit=None):
     conn.close()
     return [dict(row) for row in rows]
 
+
 def save_analysis(img_id, results, error=None):
     "Save analysis results or error."
     conn = sqlite3.connect(DB_PATH)
@@ -151,26 +225,40 @@ def save_analysis(img_id, results, error=None):
             WHERE id = ?
         """, (now, error, img_id))
     else:
-        # Dynamic update based on provided results (to support Phase 2 enrichment without wiping Phase 1)
+        # Dynamic update based on provided results
         update_fields = {
             'analysis_status': 'complete',
             'analyzed_at': now,
             'error_message': None
         }
         
-        # Map of potentially available fields in results
+        # All valid columns (including new BroadsideStudio-aligned fields)
         valid_columns = [
-            'ship_type', 'view_type', 'navy', 'era',
-            'ship_name', 'ship_class', 'hull_number', 'shipyard',
-            'displacement', 'armament', 'dimensions',
+            # Structure
+            'image_type', 'view_type', 'view_style', 'orientation',
+            # Identification
+            'ship_type', 'ship_name', 'ship_class', 'hull_number', 
+            'navy', 'era', 'is_historical', 'designer',
+            # Quality
+            'silhouette_clarity', 'annotation_density', 'resolution_quality',
+            'extraction_tier', 'suitable_for_extraction',
+            # Technical specs
+            'shipyard', 'displacement', 'armament', 'dimensions',
             'propulsion', 'armor', 'speed', 'complement',
-            'launch_date', 'commission_date', 'reasoning',
-            'confidence', 'notes'
+            'launch_date', 'commission_date',
+            # Metadata
+            'reasoning', 'confidence', 'notes'
         ]
         
         for col in valid_columns:
             if col in results and results[col] is not None:
                 update_fields[col] = results[col]
+        
+        # Handle JSON fields
+        json_fields = ['bounds', 'quality_issues', 'text_content']
+        for col in json_fields:
+            if col in results and results[col] is not None:
+                update_fields[col] = json.dumps(results[col])
                 
         if 'raw_response' in results:
             update_fields['raw_response'] = json.dumps(results['raw_response'])
@@ -185,6 +273,7 @@ def save_analysis(img_id, results, error=None):
         
     conn.commit()
     conn.close()
+
 
 def get_ready_to_organize(limit=None):
     "Get images that are complete but not yet organized."
@@ -203,6 +292,7 @@ def get_ready_to_organize(limit=None):
     conn.close()
     return [dict(row) for row in rows]
 
+
 def update_organization(img_id, new_path, status='organized'):
     "Update organization status and physical path."
     conn = sqlite3.connect(DB_PATH)
@@ -216,6 +306,7 @@ def update_organization(img_id, new_path, status='organized'):
     conn.commit()
     conn.close()
 
+
 def export_manifest(output_path):
     "Export all images to JSON manifest."
     conn = sqlite3.connect(DB_PATH)
@@ -227,17 +318,20 @@ def export_manifest(output_path):
     
     data = [dict(row) for row in rows]
     
-    # Clean up raw_response for JSON export
+    # Parse JSON fields for export
+    json_fields = ['raw_response', 'bounds', 'quality_issues', 'text_content']
     for entry in data:
-        if entry.get('raw_response'):
-            try:
-                entry['raw_response'] = json.loads(entry['raw_response'])
-            except:
-                pass
+        for field in json_fields:
+            if entry.get(field):
+                try:
+                    entry[field] = json.loads(entry[field])
+                except:
+                    pass
 
     with open(output_path, 'w') as f:
         json.dump(data, f, indent=2)
     print(f"[*] Manifest exported to {output_path}")
+
 
 def get_phase2_pending(limit=None):
     "Get images ready for Phase 2 enrichment (valid ships, Phase 1 complete)."
@@ -268,6 +362,31 @@ def get_phase2_pending(limit=None):
     conn.close()
     return [dict(row) for row in rows]
 
+
+def get_extraction_candidates(tier_max=3, limit=None):
+    """Get images suitable for extraction (Tier 1-3 by default)."""
+    conn = sqlite3.connect(DB_PATH)
+    conn.row_factory = sqlite3.Row
+    cursor = conn.cursor()
+    
+    query = """
+        SELECT * FROM images 
+        WHERE suitable_for_extraction = 1
+        AND extraction_tier <= ?
+        ORDER BY extraction_tier ASC
+    """
+    params = [tier_max]
+    if limit:
+        query += " LIMIT ?"
+        params.append(limit)
+        
+    cursor.execute(query, params)
+    rows = cursor.fetchall()
+    conn.close()
+    return [dict(row) for row in rows]
+
+
 if __name__ == "__main__":
     init_db()
+    migrate_db()  # Add new columns to existing DB
     import_manifest(DATA_DIR / "master_manifest.json")
