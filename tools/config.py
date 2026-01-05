@@ -150,7 +150,16 @@ def get_absolute_path(relative_path: str) -> Path:
     """
     Resolve a relative path (from manifest) to an absolute path in image storage.
     """
-    return get_image_dir() / relative_path
+    # Defensive check: ensure path is truly relative and doesn't escape
+    rel_path = Path(relative_path)
+    if rel_path.is_absolute() or ".." in rel_path.parts:
+        # If absolute or has traversal, we should handle it safely
+        # Here we just take the name part if it's suspicious, or raise error
+        # For our case, we expect relative paths from manifests
+        return get_image_dir() / rel_path.name
+        
+    return get_image_dir() / rel_path
+
 
 
 

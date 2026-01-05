@@ -273,7 +273,11 @@ async def main():
     await classifier.run(limit=args.limit, retry_failed=args.retry_failed)
     
     # Auto-sync after classification run
-    db.sync_frontend()
+    try:
+        db.sync_frontend()
+    except Exception as e:
+        print(f"[!] Auto-sync to frontend failed: {e}")
+
 
 
 if __name__ == "__main__":
