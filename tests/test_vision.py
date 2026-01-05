@@ -130,7 +130,10 @@ class TestDataIntegrity:
         
         for row in rows:
             path = row['local_path']
-            assert path.startswith('img/'), f"Invalid path for {row['id']}: {path}"
+            # Paths should be storage-relative, NOT starting with img/
+            assert not path.startswith('img/'), f"Path should be storage-relative, found 'img/' for {row['id']}: {path}"
+            assert '/' in path, f"Invalid path format for {row['id']}: {path} (expected folder/file.ext)"
+
     
     def test_pending_vs_complete_counts(self, production_db):
         """Report on classification progress."""
