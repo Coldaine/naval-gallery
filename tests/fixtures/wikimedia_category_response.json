@@ -1,0 +1,31 @@
+{
+    "query": {
+        "categorymembers": [
+            {
+                "pageid": 12345,
+                "ns": 6,
+                "title": "File:USS Iowa BB-61 hull lines plan.svg"
+            },
+            {
+                "pageid": 12346,
+                "ns": 6,
+                "title": "File:HMS Dreadnought profile diagram.png"
+            },
+            {
+                "pageid": 12347,
+                "ns": 6,
+                "title": "File:Yamato photo at sea.jpg"
+            },
+            {
+                "pageid": 12348,
+                "ns": 14,
+                "title": "Category:Subcategory to skip"
+            },
+            {
+                "pageid": 12349,
+                "ns": 6,
+                "title": "File:Bismarck deck layout drawing.png"
+            }
+        ]
+    }
+}
