@@ -42,8 +42,7 @@ def run():
     # Load all produced JSONs
     files = glob.glob(str(DATA_DIR / "*_manifest.json"))
     for fpath in files:
-        if "staging" in fpath: continue # Skip old pilot
-        if "master" in fpath: continue  # Don't include the master in itself
+        if "master_manifest.json" in fpath: continue  # Don't include the master in itself
         source_name = os.path.basename(fpath).replace("_manifest.json", "")
         try:
             with open(fpath, "r") as f:
@@ -62,6 +61,14 @@ def run():
     # Save master manifest
     with open(DATA_DIR / "master_manifest.json", "w") as f:
         json.dump(all_images, f, indent=2)
+
+    # Prepare for frontend: Ensure local_path has 'img/' prefix if not already present
+    frontend_images = []
+    for img in all_images:
+        img_copy = img.copy()
+        if 'local_path' in img_copy and not img_copy['local_path'].startswith('img/'):
+            img_copy['local_path'] = f"img/{img_copy['local_path']}"
+        frontend_images.append(img_copy)
         
     print("\nSUMMARY:")
     print("-" * 30)
@@ -71,9 +78,9 @@ def run():
     print(f"Total Unique Images (Deduplicated): {len(all_images)}")
     print("-" * 30)
     
-    # Update data.js for frontend
+    # Update images.js for frontend
     with open(DATA_DIR / "images.js", "w") as f:
-        f.write(f"const images = {json.dumps(all_images, indent=2)};")
+        f.write(f"const images = {json.dumps(frontend_images, indent=2)};")
 
 if __name__ == "__main__":
     run()

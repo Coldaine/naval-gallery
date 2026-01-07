@@ -1,0 +1,57 @@
+{
+    "query": {
+        "pages": {
+            "12345": {
+                "pageid": 12345,
+                "title": "File:USS Iowa BB-61 hull lines plan.svg",
+                "imageinfo": [
+                    {
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/a/ab/USS_Iowa_BB-61_hull_lines_plan.svg",
+                        "extmetadata": {
+                            "ImageDescription": {
+                                "value": "Hull lines plan of USS Iowa (BB-61)"
+                            },
+                            "DateTimeOriginal": {
+                                "value": "1943"
+                            }
+                        }
+                    }
+                ]
+            },
+            "12346": {
+                "pageid": 12346,
+                "title": "File:HMS Dreadnought profile diagram.png",
+                "imageinfo": [
+                    {
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/b/bc/HMS_Dreadnought_profile.png",
+                        "extmetadata": {
+                            "ImageDescription": {
+                                "value": "Profile diagram of HMS Dreadnought"
+                            },
+                            "DateTimeOriginal": {
+                                "value": "<span>1906</span>"
+                            }
+                        }
+                    }
+                ]
+            },
+            "12349": {
+                "pageid": 12349,
+                "title": "File:Bismarck deck layout drawing.png",
+                "imageinfo": [
+                    {
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/c/cd/Bismarck_deck_layout.png",
+                        "extmetadata": {
+                            "ImageDescription": {
+                                "value": "Deck layout drawing of Bismarck"
+                            },
+                            "DateTimeOriginal": {
+                                "value": "1940"
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}

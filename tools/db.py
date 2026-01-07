@@ -333,6 +333,41 @@ def export_manifest(output_path):
     print(f"[*] Manifest exported to {output_path}")
 
 
+def sync_frontend():
+    "Export all analyzed images to images.js for the frontend."
+    output_path = DATA_DIR / "images.js"
+    conn = sqlite3.connect(DB_PATH)
+    conn.row_factory = sqlite3.Row
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM images WHERE analysis_status = 'complete'")
+
+    rows = cursor.fetchall()
+    conn.close()
+    
+    data = [dict(row) for row in rows]
+    
+    # Parse JSON fields for frontend use
+    json_fields = ['raw_response', 'bounds', 'quality_issues', 'text_content']
+    for entry in data:
+        for field in json_fields:
+            if entry.get(field):
+                try:
+                    entry[field] = json.loads(entry[field])
+                except (json.JSONDecodeError, TypeError, ValueError):
+                    # If the field is not valid JSON or has an unexpected type, leave it as-is
+                    # This gracefully handles legacy data or non-JSON fields
+                    pass
+
+
+    with open(output_path, 'w') as f:
+        # Basic XSS protection: escape </script> tags in JSON
+        json_data = json.dumps(data, indent=2).replace('</script>', '<\\/script>')
+        f.write(f"const images = {json_data};")
+
+    print(f"[*] Frontend synced to {output_path}")
+
+
+
 def get_phase2_pending(limit=None):
     "Get images ready for Phase 2 enrichment (valid ships, Phase 1 complete)."
     conn = sqlite3.connect(DB_PATH)

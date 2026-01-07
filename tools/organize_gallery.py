@@ -3,7 +3,12 @@ import os
 import shutil
 import argparse
 import logging
+import sys
 from pathlib import Path
+
+# Add to path for config import
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from config import get_image_dir, validate_config
 import db
 
 # Setup logging
@@ -56,8 +61,8 @@ def organize_images(limit=None, copy_only=False, dry_run=False):
 
     logger.info(f"[*] Organizing {len(pending)} images.")
     
-    base_dir = Path(__file__).parent.parent
-    classified_base = base_dir / "img" / "classified"
+    image_dir = get_image_dir()
+    classified_base = image_dir / "classified"
     
     for item in pending:
         img_id = item['id']
@@ -69,8 +74,21 @@ def organize_images(limit=None, copy_only=False, dry_run=False):
             
         old_path = Path(old_path_str)
         
-        # Absolute path handling
-        abs_old_path = base_dir / old_path if not old_path.is_absolute() else old_path
+        # Paths in DB might be relative to image_dir or absolute
+        if old_path.is_absolute():
+            abs_old_path = old_path
+        else:
+            # Handle both 'img/source/file.jpg' and 'source/file.jpg'
+            if str(old_path).startswith("img/"):
+                # If it has img/ prefix, it's relative to the PARENT of image_dir (usually PROJECT_ROOT if local)
+                # But if image_dir is external, 'img/' is likely inside it.
+                # The most robust way is to check both.
+                abs_old_path = image_dir / old_path
+                if not abs_old_path.exists():
+                    # Strip 'img/' and try again
+                    abs_old_path = image_dir / Path(*old_path.parts[1:])
+            else:
+                abs_old_path = image_dir / old_path
         
         if not abs_old_path.exists():
             logger.warning(f"[-] Original file not found: {abs_old_path}")
@@ -83,7 +101,7 @@ def organize_images(limit=None, copy_only=False, dry_run=False):
         view_type = sanitize(item.get('view_type', 'Unknown'))
         ship_name = sanitize(item.get('ship_name', 'Unknown'))
         
-        # img/classified/{navy}/{ship_type}/{view_type}/
+        # classified/{navy}/{ship_type}/{view_type}/
         target_dir = classified_base / navy / ship_type / view_type
         
         # 3. Construct Filename
@@ -92,12 +110,8 @@ def organize_images(limit=None, copy_only=False, dry_run=False):
         new_filename = f"{navy}_{ship_name}_{view_type}_{img_id}{ext}"
         target_path = target_dir / new_filename
         
-        # Relative path for DB storage (relative to project root)
-        try:
-            rel_target_path = target_path.relative_to(base_dir)
-        except ValueError:
-            # Fallback if target is somehow outside our base
-            rel_target_path = target_path
+        # Relative path for DB storage (relative to image_dir)
+        rel_target_path = f"classified/{navy}/{ship_type}/{view_type}/{new_filename}"
 
         if dry_run:
             logger.info(f"[DRY RUN] Would move {abs_old_path} -> {target_path}")
@@ -109,13 +123,13 @@ def organize_images(limit=None, copy_only=False, dry_run=False):
             
             if copy_only:
                 shutil.copy2(abs_old_path, target_path)
-                logger.info(f"[+] Copied: {img_id} to {rel_target_path}")
+                logger.info(f"[+] Copied: {img_id} to img/{rel_target_path}")
             else:
                 shutil.move(abs_old_path, target_path)
-                logger.info(f"[+] Moved: {img_id} to {rel_target_path}")
+                logger.info(f"[+] Moved: {img_id} to img/{rel_target_path}")
             
             # 5. Update DB
-            db.update_organization(img_id, str(rel_target_path), status='organized')
+            db.update_organization(img_id, rel_target_path, status='organized')
             
         except Exception as e:
             logger.error(f"[!] Failed to organize {img_id}: {e}")

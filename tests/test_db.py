@@ -48,8 +48,11 @@ class TestInitDb:
         conn.close()
         
         required = {'id', 'local_path', 'analysis_status', 'ship_type', 'navy', 
-                    'shipyard', 'hull_number', 'propulsion', 'armor', 'reasoning'}
+                    'shipyard', 'hull_number', 'propulsion', 'armor', 'reasoning',
+                    'image_type', 'view_style', 'orientation', 'extraction_tier',
+                    'suitable_for_extraction', 'quality_issues', 'text_content'}
         assert required.issubset(columns)
+
 
 
 class TestManifestImport:
@@ -128,7 +131,11 @@ class TestSaveAnalysis:
             'era': 'WWI',
             'shipyard': 'Brooklyn Navy Yard',
             'hull_number': 'BB-39',
-            'reasoning': 'Identified by turret arrangement'
+            'reasoning': 'Identified by turret arrangement',
+            'view_style': 'line_drawing_bw',
+            'extraction_tier': 2,
+            'suitable_for_extraction': True,
+            'text_content': [{'text': 'USS Arizona', 'location': {'x': 100, 'y': 20}}]
         }
         db.save_analysis("test_ship", results)
         
@@ -141,7 +148,10 @@ class TestSaveAnalysis:
         
         assert row['analysis_status'] == 'complete'
         assert row['ship_type'] == 'battleship'
-        assert row['shipyard'] == 'Brooklyn Navy Yard'
+        assert row['view_style'] == 'line_drawing_bw'
+        assert row['extraction_tier'] == 2
+        assert json.loads(row['text_content'])[0]['text'] == 'USS Arizona'
+
     
     def test_saves_error_state(self, temp_db, tmp_path):
         """Should save error state correctly."""
@@ -162,3 +172,74 @@ class TestSaveAnalysis:
         
         assert row['analysis_status'] == 'failed'
         assert row['error_message'] == "API timeout"
+
+
+class TestSyncFrontend:
+    def test_exports_only_complete_images(self, temp_db, tmp_path):
+        """Should only export images with 'complete' analysis status."""
+        manifest = tmp_path / "data" / "test_manifest.json"
+        manifest.write_text(json.dumps([
+            {"id": "comp_1", "local_path": "img/c1.jpg"},
+            {"id": "pend_1", "local_path": "img/p1.jpg"},
+        ]))
+        db.import_manifest(manifest)
+        
+        db.save_analysis("comp_1", {"ship_type": "battleship"})
+        
+        db.sync_frontend()
+        
+        output_file = tmp_path / "data" / "images.js"
+        assert output_file.exists()
+        
+        content = output_file.read_text()
+        assert "const images = [" in content
+        
+        # Parse the JSON part
+        json_str = content.replace("const images = ", "").rstrip(";")
+        data = json.loads(json_str)
+        
+        assert len(data) == 1
+        assert data[0]['id'] == "comp_1"
+        assert data[0]['analysis_status'] == "complete"
+
+    def test_parses_json_fields_for_js(self, temp_db, tmp_path):
+        """JSON fields in DB should be parsed into JS objects in export."""
+        manifest = tmp_path / "data" / "test_manifest.json"
+        manifest.write_text(json.dumps([
+            {"id": "json_test", "local_path": "img/j.jpg"}
+        ]))
+        db.import_manifest(manifest)
+        
+        results = {
+            'ship_type': 'cruiser',
+            'text_content': [{'text': 'label', 'x': 10}],
+            'bounds': {'x': 0, 'y': 0, 'w': 100, 'h': 50}
+        }
+        db.save_analysis("json_test", results)
+        
+        db.sync_frontend()
+        
+        json_str = (tmp_path / "data" / "images.js").read_text().replace("const images = ", "").rstrip(";")
+        data = json.loads(json_str)
+        
+        assert isinstance(data[0]['text_content'], list)
+        assert data[0]['text_content'][0]['text'] == 'label'
+        assert isinstance(data[0]['bounds'], dict)
+        assert data[0]['bounds']['w'] == 100
+
+    def test_xss_protection_escapes_script_tags(self, temp_db, tmp_path):
+        """Should escape </script> tags to prevent XSS."""
+        manifest = tmp_path / "data" / "test_manifest.json"
+        manifest.write_text(json.dumps([
+            {"id": "xss_test", "local_path": "img/x.jpg"}
+        ]))
+        db.import_manifest(manifest)
+        
+        db.save_analysis("xss_test", {"ship_type": "</script><script>alert(1)</script>"})
+        
+        db.sync_frontend()
+        
+        content = (tmp_path / "data" / "images.js").read_text()
+        assert "</script>" not in content
+        assert "<\\/script>" in content
+

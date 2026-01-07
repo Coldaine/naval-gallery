@@ -16,7 +16,7 @@ from pathlib import Path
 
 # Add parent to path for config import
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from config import get_image_dir, validate_config
+from config import get_absolute_path, validate_config
 from vision import MCPVisionClient
 import db
 
@@ -144,10 +144,7 @@ class Classifier:
         logger.info("[!] Stopping classification...")
         self.running = False
 
-    def _resolve_image_path(self, local_path: str) -> Path:
-        """Resolve local_path (relative to image storage) to absolute path."""
-        img_dir = get_image_dir()
-        return img_dir / local_path
+
 
     async def run(self, limit=None, retry_failed=False):
         # Validate config first
@@ -178,7 +175,7 @@ class Classifier:
                 local_path = item['local_path']
                 
                 # Resolve to absolute path
-                img_path = self._resolve_image_path(local_path)
+                img_path = get_absolute_path(local_path)
                 
                 # Check if file exists
                 if not img_path.exists():
@@ -245,6 +242,7 @@ async def main():
     parser.add_argument("--export", type=str, help="Export database to JSON manifest")
     parser.add_argument("--import-manifest", type=str, help="Import JSON manifest into database")
     parser.add_argument("--migrate", action="store_true", help="Run database migration for new columns")
+    parser.add_argument("--sync", action="store_true", help="Sync database to frontend (images.js)")
     
     args = parser.parse_args()
 
@@ -263,12 +261,23 @@ async def main():
         db.export_manifest(args.export)
         return
 
+    if args.sync:
+        db.sync_frontend()
+        return
+
     # Normal execution
     db.init_db()
     db.migrate_db()  # Ensure new columns exist
     
     classifier = Classifier(phase=args.phase)
     await classifier.run(limit=args.limit, retry_failed=args.retry_failed)
+    
+    # Auto-sync after classification run
+    try:
+        db.sync_frontend()
+    except Exception as e:
+        print(f"[!] Auto-sync to frontend failed: {e}")
+
 
 
 if __name__ == "__main__":
