@@ -117,6 +117,42 @@ Studio downloads images on-demand from URLs
 
 ---
 
+## Investigation Notes: ProjectBroadsideStudio Alignment
+
+Before implementing integration, investigate these in Studio:
+
+### Storage Status
+- [ ] Is `zo:~/navalforge/` directory structure created?
+- [ ] Is PostgreSQL on zo actually running and accessible?
+- [ ] What's the current state of Tailscale connectivity to zo?
+- [ ] Check `docs/infrastructure/artifact_storage.md` - much is marked "Not Implemented"
+
+### Schema Compatibility
+- [ ] Compare `naval-gallery/tools/db.py` columns with Studio's Stage 1 database schema
+- [ ] Verify taxonomy enums match exactly (`view_type`, `ship_type`, `era` values)
+- [ ] Check if Studio expects any fields naval-gallery doesn't have
+
+### Open PRs to Review
+Studio has 3 open PRs that may affect integration:
+- [ ] **PR #11**: Hull Z-Level Extraction docs
+- [ ] **PR #6**: Verifier-Corrector architecture (336 additions)
+- [ ] **PR #5**: Verification stage analysis
+
+### Key Files to Read in Studio
+```
+docs/infrastructure/artifact_storage.md    # Storage architecture (mostly planned)
+docs/infrastructure/database_environments.md
+src/navalforge/stage1/database/models.py   # Actual schema
+docs/Stage1_Ingestion/                     # Stage 1 spec
+```
+
+### Questions to Answer
+1. Does Studio have an "import from external source" flow, or does it expect to ingest raw images?
+2. Should naval-gallery push to Studio, or should Studio pull from naval-gallery?
+3. What's the minimum viable integration (manifest export? direct DB sync? MCP tool?)
+
+---
+
 ## Quick Wins
 
 Things that can be done without architectural decisions:
