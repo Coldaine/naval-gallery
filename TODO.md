@@ -77,38 +77,43 @@ Make naval-gallery a true upstream pipeline.
 
 ## Architecture Decision Needed
 
-Before implementing, decide on storage strategy:
+**Key insight:** Studio's artifact store is planned for `zo:~/navalforge/artifacts/`, NOT Google Drive.
 
-### Option A: Copy to Studio (Recommended for now)
+### Option A: rsync to zo (Recommended)
 ```
 naval-gallery (SQLite + Google Drive)
     │
-    ▼ export script
+    ▼ rsync approved images to zo
     │
-Studio ingestion (PostgreSQL + local artifacts)
+zo:~/navalforge/inputs/naval-gallery/
+    │
+    ▼ Studio reads from zo
+    │
+PostgreSQL + artifacts on zo
 ```
-- Pro: Clean separation, Studio owns its data
-- Con: Duplicates storage
+- Pro: Single system of record (zo), no duplication once synced
+- Con: Requires running rsync periodically
 
-### Option B: Shared Storage
+### Option B: Mount Google Drive on zo
 ```
-naval-gallery (SQLite)
+naval-gallery (SQLite + Google Drive)
     │
     ├─────────────┐
     ▼             ▼
-Google Drive ← Studio reads directly
+Google Drive ← rclone mount on zo
 ```
-- Pro: No duplication
-- Con: Tight coupling, requires Google Drive on Zo
+- Pro: No manual sync
+- Con: Adds rclone dependency to zo, network latency
 
-### Option C: Cloud Intermediary
+### Option C: Export manifests only
 ```
-naval-gallery → S3 bucket ← Studio
-                    │
-                manifest.json (metadata)
+naval-gallery exports manifest.json with URLs
+    │
+    ▼
+Studio downloads images on-demand from URLs
 ```
-- Pro: Decoupled, scalable
-- Con: More infrastructure
+- Pro: No storage sync needed
+- Con: Depends on external URLs staying valid
 
 ---
 
